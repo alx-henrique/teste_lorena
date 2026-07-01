@@ -1,0 +1,6 @@
+{
+  "name": "Planejadora Financeira",
+  "description": "Website institucional premium inspirado no estilo Apple para consultoria e planejamento financeiro de pessoas e pequenos negócios.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
