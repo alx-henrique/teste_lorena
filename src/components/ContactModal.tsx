@@ -87,7 +87,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <h3 className="font-display text-2xl font-bold tracking-tight text-neutral-950 mt-1">
                     Vamos desenhar sua estratégia?
                   </h3>
-                  <p className="font-sans text-xs sm:text-sm text-neutral-500 font-light mt-1.5">
+                  <p className="font-sans text-xs sm:text-sm text-neutral-500 font-medium mt-1.5">
                     Preencha os campos abaixo e entrarei em contato em até 24 horas para alinhar nossos próximos passos.
                   </p>
                 </div>
@@ -211,7 +211,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <h3 className="font-display text-2xl font-bold tracking-tight text-neutral-950">
                     Mensagem Recebida!
                   </h3>
-                  <p className="font-sans text-sm text-neutral-500 font-light max-w-sm leading-relaxed">
+                  <p className="font-sans text-sm text-neutral-500 font-medium max-w-sm leading-relaxed">
                     Olá <strong>{formData.nome}</strong>, obrigado pelo contato. Analisarei suas informações sobre <strong>{formData.tipo}</strong> e retornarei via WhatsApp ou e-mail em até 24 horas.
                   </p>
                 </div>

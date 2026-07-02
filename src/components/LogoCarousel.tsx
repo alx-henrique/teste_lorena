@@ -24,18 +24,21 @@ export default function LogoCarousel() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, margin: "-100px" }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="py-12 bg-neutral-50/50 border-t border-b border-black/[0.03] overflow-hidden select-none"
+      className="py-8 bg-transparent overflow-hidden select-none"
     >
-      <div className="max-w-7xl mx-auto px-6 mb-6">
-        <p className="text-center font-sans text-[10px] sm:text-xs font-semibold tracking-widest text-neutral-400 uppercase">
-          Empresas e executivos de alta performance confiam em nosso olhar
+      <div className="max-w-7xl mx-auto px-6 mb-10 flex flex-col items-center">
+        <h3 className="text-center font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#6fbc83]">
+          Alguns dos clientes que já passaram por aqui
+        </h3>
+        <p className="font-sans text-base md:text-lg text-neutral-600 mt-3 leading-relaxed font-medium max-w-2xl text-center">
+          Empresas que confiaram no meu trabalho para alcançar novos resultados.
         </p>
       </div>
 
       <div className="relative w-full flex items-center">
         {/* Soft fading overlays at the edges for an ultra-clean premium transition */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-neutral-50/80 to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-neutral-50/80 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#d9d9d9] to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#d9d9d9] to-transparent z-10 pointer-events-none"></div>
 
         <div className="w-full overflow-hidden py-4">
           <div className="animate-marquee flex gap-12 sm:gap-20">
@@ -44,10 +47,10 @@ export default function LogoCarousel() {
                 key={`${logo.name}-${index}`}
                 className="flex items-center space-x-2.5 opacity-30 hover:opacity-75 transition-opacity duration-300 pointer-events-none"
               >
-                <span className="font-display text-lg sm:text-xl font-bold tracking-tight text-black">
+                <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-black">
                   {logo.symbol}
                 </span>
-                <span className="font-sans text-xs sm:text-sm font-semibold tracking-wider text-black uppercase">
+                <span className="font-sans text-base sm:text-lg font-semibold tracking-wider text-black uppercase">
                   {logo.name}
                 </span>
               </div>

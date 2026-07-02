@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { MessageSquare } from "lucide-react";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 interface Testimonial {
   id: number;
@@ -13,29 +13,29 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Lorem Ipsum",
-    role: "Consectetur Adipiscing",
+    name: "Isis",
+    role: "Canela Pet e Café",
     avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&h=120&q=80",
     feedback: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
   },
   {
     id: 2,
-    name: "Dolor Sit",
-    role: "Eiusmod Tempor",
+    name: "Thais Helena",
+    role: "",
     avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=120&h=120&q=80",
     feedback: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
   },
   {
     id: 3,
-    name: "Amet Elit",
-    role: "Labore et Dolore",
+    name: "Carol",
+    role: "Arte da Conversa",
     avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=120&h=120&q=80",
     feedback: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
   },
   {
     id: 4,
-    name: "Sunt in Culpa",
-    role: "Officia Deserunt",
+    name: "Ste",
+    role: "Ondas Buenas",
     avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=120&h=120&q=80",
     feedback: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet."
   }
@@ -67,7 +67,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="depoimentos" className="py-16 md:py-20 bg-white relative overflow-hidden">
+    <section id="depoimentos" className="py-8 md:py-10 bg-transparent relative overflow-hidden">
       {/* Background ambient gradient blur */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-neutral-100/50 rounded-full blur-3xl pointer-events-none z-0"></div>
 
@@ -81,14 +81,11 @@ export default function Testimonials() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-10 md:mb-12"
         >
-          <span className="font-sans text-xs font-semibold tracking-widest text-neutral-400 uppercase">
-            Depoimentos reais
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6fbc83] mt-3">
-            Depoimentos de quem passou por aqui:
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6fbc83]">
+            Depoimentos de quem passou por aqui
           </h2>
-          <p className="font-sans text-sm sm:text-base text-neutral-500 mt-4 leading-relaxed font-light">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+          <p className="font-sans text-base md:text-lg text-neutral-600 mt-4 leading-relaxed font-medium">
+            Histórias reais de quem transformou a sua organização financeira e alcançou novos patamares.
           </p>
         </motion.div>
 
@@ -141,7 +138,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Feedback Text */}
-                <p className="font-sans text-[15px] sm:text-sm text-white leading-relaxed font-light mb-6">
+                <p className="font-sans text-[15px] sm:text-sm text-white leading-relaxed font-medium mb-6">
                   "{t.feedback}"
                 </p>
               </div>
@@ -151,6 +148,7 @@ export default function Testimonials() {
                 <img
                   src={t.avatar}
                   alt={t.name}
+                  loading="lazy"
                   draggable={false}
                   referrerPolicy="no-referrer"
                   className="w-10 h-10 rounded-full object-cover border border-white/10"
@@ -169,11 +167,6 @@ export default function Testimonials() {
           {/* Spacer to ensure right padding on mobile scroll */}
           <div className="w-1 shrink-0 sm:hidden"></div>
         </div>
-
-        {/* Bottom micro-copy confirming privacy */}
-        <p className="text-center font-sans text-sm sm:text-xs text-neutral-400 mt-12 font-light">
-          * Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-        </p>
 
       </div>
     </section>

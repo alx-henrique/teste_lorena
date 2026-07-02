@@ -70,10 +70,10 @@ export default function Counters() {
   return (
     <section
       ref={sectionRef}
-      className="py-8 md:py-10 border-y border-black/[0.04] bg-white"
+      className="py-6 md:py-8 bg-transparent"
     >
       <div className="max-w-5xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-black/[0.05] text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0">
           
           {/* Counter 1 */}
           <motion.div
@@ -81,14 +81,14 @@ export default function Counters() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center md:items-start space-y-2.5 pb-8 md:pb-0 md:pr-16 group"
+            className="flex flex-col items-center justify-center space-y-3 pb-10 md:pb-0 group text-center"
           >
-            <span className="font-display text-4xl sm:text-5xl md:text-5xl font-semibold tracking-tight text-[#6fbc83] select-none">
+            <span className="font-display text-6xl sm:text-7xl md:text-7xl font-extrabold tracking-tight text-[#6fbc83] select-none">
               +{count1}
             </span>
-            <div className="w-8 h-[1px] bg-black/15 group-hover:w-16 transition-all duration-500 ease-out"></div>
-            <p className="font-sans text-xs sm:text-sm text-neutral-500 font-light max-w-xs tracking-wide leading-relaxed text-center md:text-left">
-              clientes pessoa física e autônomos
+            <div className="w-8 h-[1.5px] bg-[#6fbc83]/30 group-hover:w-16 transition-all duration-500 ease-out"></div>
+            <p className="font-sans text-sm sm:text-base text-neutral-600 font-medium max-w-xs tracking-wide leading-relaxed">
+              Pessoas físicas e profissionais autônomos
             </p>
           </motion.div>
 
@@ -98,14 +98,14 @@ export default function Counters() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="flex flex-col items-center md:items-start space-y-2.5 pt-8 md:pt-0 md:pl-16 group"
+            className="flex flex-col items-center justify-center space-y-3 pt-10 md:pt-0 group text-center"
           >
-            <span className="font-display text-4xl sm:text-5xl md:text-5xl font-semibold tracking-tight text-[#6fbc83] select-none">
+            <span className="font-display text-6xl sm:text-7xl md:text-7xl font-extrabold tracking-tight text-[#6fbc83] select-none">
               +{count2}
             </span>
-            <div className="w-8 h-[1px] bg-black/15 group-hover:w-16 transition-all duration-500 ease-out"></div>
-            <p className="font-sans text-xs sm:text-sm text-neutral-500 font-light max-w-xs tracking-wide leading-relaxed text-center md:text-left">
-              pequenos negócios
+            <div className="w-8 h-[1.5px] bg-[#6fbc83]/30 group-hover:w-16 transition-all duration-500 ease-out"></div>
+            <p className="font-sans text-sm sm:text-base text-neutral-600 font-medium max-w-xs tracking-wide leading-relaxed">
+              Pequenos negócios organizados e estruturados
             </p>
           </motion.div>
 

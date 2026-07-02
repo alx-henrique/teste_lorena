@@ -51,7 +51,7 @@ export default function FAQ() {
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6fbc83] mt-3">
             Lorem Ipsum FAQ
           </h2>
-          <p className="font-sans text-sm sm:text-base text-neutral-500 mt-4 leading-relaxed font-light">
+          <p className="font-sans text-sm sm:text-base text-neutral-500 mt-4 leading-relaxed font-medium">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
           </p>
         </motion.div>
@@ -96,7 +96,7 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-neutral-500 font-light leading-relaxed border-t border-black/[0.01]">
+                      <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-neutral-500 font-medium leading-relaxed border-t border-black/[0.01]">
                         {faq.answer}
                       </div>
                     </motion.div>

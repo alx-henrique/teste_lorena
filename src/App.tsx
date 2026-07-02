@@ -1,15 +1,38 @@
-import { useState } from "react";
+import React, { useState, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 import { motion, useScroll, useTransform } from "motion/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Counters from "./components/Counters";
-import About from "./components/About";
-import Testimonials from "./components/Testimonials";
-import LogoCarousel from "./components/LogoCarousel";
-import Projects from "./components/Projects";
-import ConsultancyInfo from "./components/ConsultancyInfo";
-import Footer from "./components/Footer";
-import ContactModal from "./components/ContactModal";
+
+// Lazy load below-the-fold components for better performance
+const Counters = React.lazy(() => import("./components/Counters"));
+const About = React.lazy(() => import("./components/About"));
+const Testimonials = React.lazy(() => import("./components/Testimonials"));
+const LogoCarousel = React.lazy(() => import("./components/LogoCarousel"));
+const Projects = React.lazy(() => import("./components/Projects"));
+const ConsultancyInfo = React.lazy(() => import("./components/ConsultancyInfo"));
+const Newsletter = React.lazy(() => import("./components/Newsletter"));
+const Footer = React.lazy(() => import("./components/Footer"));
+const ContactModal = React.lazy(() => import("./components/ContactModal"));
+const LearnMore = React.lazy(() => import("./pages/LearnMore"));
+
+function HomePage({ openContact }: { openContact: () => void }) {
+  return (
+    <>
+      <Hero onOpenContact={openContact} />
+      <Suspense fallback={<div className="h-20" />}>
+        <Counters />
+        <About />
+        <LogoCarousel />
+        <Testimonials />
+        <ConsultancyInfo onOpenContact={openContact} />
+        <Projects />
+        <Newsletter />
+        <Footer />
+      </Suspense>
+    </>
+  );
+}
 
 export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -27,7 +50,7 @@ export default function App() {
   const bgBlob4Y = useTransform(scrollY, [0, 4000], [0, 250]);
 
   return (
-    <div className="relative min-h-screen bg-[#fafafa] overflow-x-hidden selection:bg-[#6fbc83]/20 selection:text-neutral-900">
+    <div className="relative min-h-screen bg-[#d9d9d9] overflow-x-hidden selection:bg-[#6fbc83]/20 selection:text-neutral-900">
       
       {/* PARALLAX LAYER: Floating organic blurs sliding behind foreground */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -50,37 +73,23 @@ export default function App() {
       </div>
 
       {/* Foreground Content */}
-      <div className="relative z-10">
-        {/* Premium Apple Navigation */}
+      <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar onOpenContact={openContact} />
-
-        {/* Hero Section with fluid Parallax */}
-        <Hero onOpenContact={openContact} />
-
-        {/* Animated Numerical Counters */}
-        <Counters />
-
-        {/* About Section - 2 columns */}
-        <About />
-
-        {/* Infinite Client Logo Carousel */}
-        <LogoCarousel />
-
-        {/* iOS Widget-styled Testimonials */}
-        <Testimonials />
-
-        {/* Projects and Initiatives Section */}
-        <Projects />
-
-        {/* Deep-dive Consultancy Profiles and Newsletters */}
-        <ConsultancyInfo onOpenContact={openContact} />
-
-        {/* Elegant Monochromatic Footer */}
-        <Footer />
+        
+        <Routes>
+          <Route path="/" element={<HomePage openContact={openContact} />} />
+          <Route path="/sobre" element={
+            <Suspense fallback={<div className="h-20" />}>
+              <LearnMore openContact={openContact} />
+            </Suspense>
+          } />
+        </Routes>
       </div>
 
       {/* Dynamic Scheduling Dialog Sheet */}
-      <ContactModal isOpen={isContactOpen} onClose={closeContact} />
+      <Suspense fallback={null}>
+        <ContactModal isOpen={isContactOpen} onClose={closeContact} />
+      </Suspense>
       
     </div>
   );

@@ -28,12 +28,12 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projetos" className="py-16 md:py-20 bg-[#f5f5f5] relative overflow-hidden">
+    <section id="projetos" className="py-8 md:py-10 bg-transparent relative overflow-hidden">
       {/* Background ambient blurs */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#6fbc83]/5 rounded-full blur-3xl pointer-events-none z-0"></div>
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-black/[0.01] rounded-full blur-3xl pointer-events-none z-0"></div>
 
-      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 space-y-16 md:space-y-20">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 space-y-8 md:space-y-10">
         
         {/* SECTION HEADER */}
         <motion.div
@@ -43,14 +43,11 @@ export default function Projects() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto"
         >
-          <span className="font-sans text-xs font-semibold tracking-widest text-[#6fbc83] uppercase">
-            Iniciativas & Parcerias
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6fbc83] mt-3">
-            Projetos que eu participo:
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6fbc83]">
+            Outros projetos que participo
           </h2>
-          <p className="font-sans text-sm sm:text-base text-neutral-500 mt-4 leading-relaxed font-light">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+          <p className="font-sans text-base md:text-lg text-neutral-600 mt-4 leading-relaxed font-medium">
+            Iniciativas e espaços onde compartilho conhecimentos sobre finanças, negócios e estratégia.
           </p>
         </motion.div>
 
@@ -60,7 +57,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-white rounded-[2.5rem] border border-black/[0.04] p-8 md:p-12 shadow-sm relative overflow-hidden group"
+          className="bg-[#F0EEEE] border border-black/[0.03] rounded-[2.5rem] p-8 md:p-12 shadow-sm relative overflow-hidden group"
         >
           {/* Subtle decoration */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#6fbc83]/5 to-transparent rounded-full pointer-events-none"></div>
@@ -70,7 +67,7 @@ export default function Projects() {
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center space-x-2 bg-[#6fbc83] text-white px-3.5 py-1.5 rounded-full shadow-sm select-none">
                 <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-                <span className="font-display font-extrabold text-xs sm:text-[10px] tracking-wider uppercase">Lorem Ipsum</span>
+                <span className="font-display font-extrabold text-xs sm:text-[10px] tracking-wider uppercase">Projeto Autoral</span>
               </div>
               
               <div>
@@ -82,7 +79,7 @@ export default function Projects() {
                 </p>
               </div>
 
-              <div className="space-y-4 font-sans text-[15px] sm:text-sm text-neutral-600 font-light leading-relaxed">
+              <div className="space-y-4 font-sans text-[15px] sm:text-sm text-neutral-600 font-medium leading-relaxed">
                 <p>
                   Lorem ipsum <strong className="font-medium text-neutral-900">Dolor Sit Amet</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
@@ -101,7 +98,7 @@ export default function Projects() {
                 ].map((item, index) => (
                   <div key={index} className="flex items-center space-x-2.5">
                     <CheckCircle2 className="w-4 h-4 text-[#6fbc83] shrink-0" />
-                    <span className="font-sans text-sm sm:text-xs text-neutral-700 font-light">
+                    <span className="font-sans text-sm sm:text-xs text-neutral-700 font-medium">
                       {item}
                     </span>
                   </div>
@@ -117,6 +114,7 @@ export default function Projects() {
                   <img 
                     src={images[0].url} 
                     alt={images[0].alt} 
+                    loading="lazy"
                     className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-4">
@@ -129,6 +127,7 @@ export default function Projects() {
                   <img 
                     src={images[1].url} 
                     alt={images[1].alt} 
+                    loading="lazy"
                     className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-3">
@@ -141,6 +140,7 @@ export default function Projects() {
                   <img 
                     src={images[2].url} 
                     alt={images[2].alt} 
+                    loading="lazy"
                     className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-3">
@@ -163,7 +163,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className={`bg-white rounded-[2rem] border p-6 shadow-sm transition-all duration-300 cursor-pointer overflow-hidden relative group ${
+            className={`bg-[#F0EEEE] rounded-[2rem] border p-6 shadow-sm transition-all duration-300 cursor-pointer overflow-hidden relative group ${
               expandedId === "fofoca" ? "ring-2 ring-[#6fbc83] border-transparent" : "border-black/[0.04] hover:border-black/[0.08]"
             }`}
             onClick={() => toggleExpand("fofoca")}
@@ -178,7 +178,7 @@ export default function Projects() {
                     Fofoca de Bolso
                   </h4>
                   <p className="font-sans text-xs sm:text-[10px] text-neutral-400 font-medium uppercase tracking-wide mt-0.5">
-                    Lorem Ipsum
+                    Dinheiro & Comportamento
                   </p>
                 </div>
               </div>
@@ -191,8 +191,8 @@ export default function Projects() {
               </motion.div>
             </div>
 
-            <p className="font-sans text-sm sm:text-xs text-neutral-500 font-light mt-4 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+            <p className="font-sans text-base sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
+              Levo as discussões sobre finanças para o microfone! No podcast Fofoca de Bolso, <strong className="text-[#6fbc83] font-semibold">desmistificamos a relação com o dinheiro</strong> de um jeito leve e sem as amarras tradicionais.
             </p>
 
             <AnimatePresence initial={false}>
@@ -205,8 +205,8 @@ export default function Projects() {
                   className="overflow-hidden"
                 >
                   <div className="pt-5 mt-5 border-t border-black/[0.06] space-y-4">
-                    <p className="font-sans text-sm sm:text-[11px] text-neutral-500 leading-relaxed font-light">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                    <p className="font-sans text-[15px] sm:text-[15px] text-neutral-500 leading-relaxed font-medium">
+                      No episódio mais recente, conversamos sobre os <strong className="text-[#6fbc83] font-semibold">desafios reais de quem decide mudar de rumo profissional</strong> de forma planejada. Dê o play para conferir!
                     </p>
 
                     {/* Embed Player */}
@@ -240,7 +240,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className={`bg-white rounded-[2rem] border p-6 shadow-sm transition-all duration-300 cursor-pointer overflow-hidden relative group ${
+            className={`bg-[#F0EEEE] rounded-[2rem] border p-6 shadow-sm transition-all duration-300 cursor-pointer overflow-hidden relative group ${
               expandedId === "supervisora" ? "ring-2 ring-[#6fbc83] border-transparent" : "border-black/[0.04] hover:border-black/[0.08]"
             }`}
             onClick={() => toggleExpand("supervisora")}
@@ -252,10 +252,10 @@ export default function Projects() {
                 </div>
                 <div>
                   <h4 className="font-display font-extrabold text-lg text-neutral-950 tracking-tight">
-                    Supervisora parceira Nossa
+                    Supervisora Nossa
                   </h4>
                   <p className="font-sans text-xs sm:text-[10px] text-neutral-400 font-medium uppercase tracking-wide mt-0.5">
-                    Lorem Ipsum
+                    Orientação & Desenvolvimento
                   </p>
                 </div>
               </div>
@@ -268,8 +268,8 @@ export default function Projects() {
               </motion.div>
             </div>
 
-            <p className="font-sans text-sm sm:text-xs text-neutral-500 font-light mt-4 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+            <p className="font-sans text-base sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
+              Apoio os alunos da Nossa a transformarem conhecimento em uma <strong className="text-[#6fbc83] font-semibold">prática de planejamento segura, ética e humana</strong>.
             </p>
 
             <AnimatePresence initial={false}>
@@ -282,16 +282,12 @@ export default function Projects() {
                   className="overflow-hidden"
                 >
                   <div className="pt-5 mt-5 border-t border-black/[0.06] space-y-4">
-                    <p className="font-sans text-sm sm:text-[11px] text-neutral-500 leading-relaxed font-light">
-                      Lorem ipsum dolor sit amet, <strong className="font-medium text-neutral-800">consectetur</strong> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    <p className="font-sans text-[15px] sm:text-[15px] text-neutral-500 leading-relaxed font-medium">
+                      Como supervisora, acompanho de perto a sua trajetória, ajudando a guiar os seus passos e a <strong className="text-[#6fbc83] font-semibold">desenhar soluções para os desafios práticos</strong> do dia a dia de atendimento.
                     </p>
-                    <p className="font-sans text-sm sm:text-[11px] text-neutral-500 leading-relaxed font-light">
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    <p className="font-sans text-[15px] sm:text-[15px] text-neutral-500 leading-relaxed font-medium">
+                      Acredito no planejamento pé no chão, focado nas ciências comportamentais para garantir que você atenda com <strong className="text-[#6fbc83] font-semibold">confiança, sensibilidade e excelência</strong>.
                     </p>
-                    <div className="bg-neutral-50 p-3 rounded-xl border border-black/[0.02]">
-                      <span className="font-sans text-xs sm:text-[10px] font-bold text-[#6fbc83] uppercase tracking-wider block mb-1">Lorem Ipsum:</span>
-                      <span className="font-sans text-xs sm:text-[10px] text-neutral-600 block leading-tight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                    </div>
                   </div>
                 </motion.div>
               )}
@@ -305,7 +301,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className={`bg-white rounded-[2rem] border p-6 shadow-sm transition-all duration-300 cursor-pointer overflow-hidden relative group ${
+            className={`bg-[#F0EEEE] rounded-[2rem] border p-6 shadow-sm transition-all duration-300 cursor-pointer overflow-hidden relative group ${
               expandedId === "workshops" ? "ring-2 ring-[#6fbc83] border-transparent" : "border-black/[0.04] hover:border-black/[0.08]"
             }`}
             onClick={() => toggleExpand("workshops")}
@@ -320,7 +316,7 @@ export default function Projects() {
                     Rodas e Workshops
                   </h4>
                   <p className="font-sans text-xs sm:text-[10px] text-neutral-400 font-medium uppercase tracking-wide mt-0.5">
-                    Lorem Ipsum
+                    Facilitação & Experiência
                   </p>
                 </div>
               </div>
@@ -333,8 +329,8 @@ export default function Projects() {
               </motion.div>
             </div>
 
-            <p className="font-sans text-sm sm:text-xs text-neutral-500 font-light mt-4 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+            <p className="font-sans text-base sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
+              Conduzo rodas de conversa e workshops onde <strong className="text-[#6fbc83] font-semibold">traduzo as finanças de forma acessível</strong> para criar ambientes de clareza estratégica e soluções reais.
             </p>
 
             <AnimatePresence initial={false}>
@@ -347,16 +343,10 @@ export default function Projects() {
                   className="overflow-hidden"
                 >
                   <div className="pt-5 mt-5 border-t border-black/[0.06] space-y-4">
-                    <p className="font-sans text-sm sm:text-[11px] text-neutral-500 leading-relaxed font-light">
-                      Lorem ipsum dolor sit amet, consectetur <strong className="font-medium text-neutral-800">adipiscing</strong> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    <p className="font-sans text-[15px] sm:text-[15px] text-neutral-500 leading-relaxed font-medium">
+                      <strong className="font-bold text-[#6fbc83] block mb-1">FOCO DA ATUAÇÃO:</strong>
+                      Workshops práticos e rodas de conversa voltados para a <strong className="text-[#6fbc83] font-semibold">organização de finanças pessoais e a estruturação de pequenos negócios</strong>.
                     </p>
-                    <p className="font-sans text-sm sm:text-[11px] text-neutral-500 leading-relaxed font-light">
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                    <div className="bg-neutral-50 p-3 rounded-xl border border-black/[0.02]">
-                      <span className="font-sans text-xs sm:text-[10px] font-bold text-[#6fbc83] uppercase tracking-wider block mb-1">Lorem Ipsum:</span>
-                      <span className="font-sans text-xs sm:text-[10px] text-neutral-600 block leading-tight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                    </div>
                   </div>
                 </motion.div>
               )}
