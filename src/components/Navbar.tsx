@@ -182,15 +182,15 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             </div>
 
             <div className="pt-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenContact();
-                }}
-                className="w-full text-center font-sans text-xs font-bold uppercase tracking-wider text-white bg-[#6fbc83] hover:bg-[#2e3925] py-3 rounded-xl transition-colors cursor-pointer"
+              <a
+                href="https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block w-full text-center font-sans text-xs font-bold uppercase tracking-wider text-white bg-[#6fbc83] hover:bg-[#2e3925] py-3 rounded-xl transition-colors cursor-pointer"
               >
                 Quero marcar uma conversa
-              </button>
+              </a>
             </div>
           </div>
         )}

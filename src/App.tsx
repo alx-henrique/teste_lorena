@@ -16,16 +16,16 @@ const Footer = React.lazy(() => import("./components/Footer"));
 const ContactModal = React.lazy(() => import("./components/ContactModal"));
 const LearnMore = React.lazy(() => import("./pages/LearnMore"));
 
-function HomePage({ openContact }: { openContact: () => void }) {
+function HomePage() {
   return (
     <>
-      <Hero onOpenContact={openContact} />
+      <Hero />
       <Suspense fallback={<div className="h-20" />}>
         <Counters />
         <About />
         <LogoCarousel />
         <Testimonials />
-        <ConsultancyInfo onOpenContact={openContact} />
+        <ConsultancyInfo />
         <Projects />
         <Newsletter />
         <Footer />
@@ -77,10 +77,10 @@ export default function App() {
         <Navbar onOpenContact={openContact} />
         
         <Routes>
-          <Route path="/" element={<HomePage openContact={openContact} />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/sobre" element={
             <Suspense fallback={<div className="h-20" />}>
-              <LearnMore openContact={openContact} />
+              <LearnMore />
             </Suspense>
           } />
         </Routes>

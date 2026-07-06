@@ -26,9 +26,14 @@ export default function Newsletter() {
               negócios falassem...
             </h2>
             
-            <p className="font-sans text-[15px] sm:text-base md:text-lg text-neutral-200/90 font-medium leading-relaxed">
-              Quinzenalmente, um texto novo compartilhando um pouco mais sobre os atendimentos que ofereço e também sobre a minha forma de enxergar esse mundo. <strong className="text-[#6fbc83] font-semibold">O planejamento financeiro para pequenos negócios precisa ir além dos números</strong>, e é sobre isso que eu escrevo.
-            </p>
+            <div className="space-y-4 font-sans text-[15px] sm:text-base md:text-lg text-neutral-200/90 font-medium leading-relaxed">
+              <p>
+                Quinzenalmente, um texto novo compartilhando um pouco mais sobre os atendimentos que ofereço. O <strong className="text-[#6fbc83] font-semibold">planejamento financeiro para pequenos negócios precisa ir além dos números</strong>, e é sobre isso que eu escrevo.
+              </p>
+              <p className="text-neutral-300">
+                Compartilho a minha forma de enxergar esse mundo, trazendo reflexões práticas sobre como gerenciar as finanças dos pequenos negócios com sabedoria, realismo e cuidado humano.
+              </p>
+            </div>
 
             <div className="pt-4 flex">
               <a

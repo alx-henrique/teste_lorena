@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
-interface HeroProps {
-  onOpenContact: () => void;
-}
-
-export default function Hero({ onOpenContact }: HeroProps) {
+export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -47,13 +43,15 @@ export default function Hero({ onOpenContact }: HeroProps) {
 
           {/* Action Button */}
           <div className="pt-2 md:pt-4 flex justify-start">
-            <button
-              onClick={onOpenContact}
+            <a
+              href="https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group cursor-pointer flex items-center space-x-2 md:space-x-3 font-sans text-sm font-bold tracking-wide text-white bg-[#6fbc83] hover:bg-[#5aa36e] px-6 py-3 md:px-8 md:py-4 rounded-full transition-all duration-300 shadow-lg transform hover:-translate-y-1 active:translate-y-0"
             >
               <span>Quero marcar uma conversa</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
           </div>
         </div>
       </div>

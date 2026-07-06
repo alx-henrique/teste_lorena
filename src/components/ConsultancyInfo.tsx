@@ -9,11 +9,7 @@ import {
   Flag 
 } from "lucide-react";
 
-interface ConsultancyInfoProps {
-  onOpenContact: () => void;
-}
-
-export default function ConsultancyInfo({ onOpenContact }: ConsultancyInfoProps) {
+export default function ConsultancyInfo() {
 
   const benefits = [
     {

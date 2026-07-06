@@ -162,8 +162,8 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        {/* 2. FOUR EXPANDABLE PROJECTS BELOW BASTIDOR */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+        {/* 2. THREE EXPANDABLE PROJECTS BELOW BASTIDOR */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
           
           {/* Card A: Fofoca de Bolso */}
           <motion.div 
@@ -356,76 +356,6 @@ export default function Projects() {
                       <strong className="font-bold text-[#6fbc83] block mb-1">FOCO DA ATUAÇÃO:</strong>
                       Workshops práticos e rodas de conversa voltados para a <strong className="text-[#6fbc83] font-semibold">organização de finanças pessoais e a estruturação de pequenos negócios</strong>.
                     </p>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-
-          {/* Card D: Se pequenos negócios falassem… */}
-          <motion.div 
-            layout
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            className={`bg-[#F0EEEE] rounded-[2rem] border p-6 shadow-sm transition-all duration-300 cursor-pointer overflow-hidden relative group ${
-              expandedId === "falassem" ? "ring-2 ring-[#6fbc83] border-transparent" : "border-black/[0.04] hover:border-black/[0.08]"
-            }`}
-            onClick={() => toggleExpand("falassem")}
-          >
-            <div className="flex items-start justify-between">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 shrink-0">
-                  <Bookmark className="w-5 h-5 text-[#6fbc83]" />
-                </div>
-                <div>
-                  <h4 className="font-display font-extrabold text-base text-neutral-950 tracking-tight leading-tight">
-                    Se pequenos negócios...
-                  </h4>
-                  <p className="font-sans text-[10px] text-neutral-400 font-semibold uppercase tracking-wide mt-0.5">
-                    Newsletter & Artigos
-                  </p>
-                </div>
-              </div>
-              <motion.div 
-                animate={{ rotate: expandedId === "falassem" ? 180 : 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="w-7 h-7 rounded-full bg-neutral-50 flex items-center justify-center text-neutral-400 shrink-0 group-hover:bg-neutral-100"
-              >
-                <ChevronDown className="w-4 h-4" />
-              </motion.div>
-            </div>
-
-            <p className="font-sans text-sm sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
-              Quinzenalmente, um texto novo compartilhando um pouco mais sobre os atendimentos que ofereço. O <strong className="text-[#6fbc83] font-semibold">planejamento financeiro para pequenos negócios precisa ir além dos números</strong>, e é sobre isso que eu escrevo.
-            </p>
-
-            <AnimatePresence initial={false}>
-              {expandedId === "falassem" && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                  <div className="pt-5 mt-5 border-t border-black/[0.06] space-y-4">
-                    <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-medium">
-                      Compartilho a minha forma de enxergar esse mundo, trazendo reflexões práticas sobre como gerenciar as finanças dos pequenos negócios com sabedoria, realismo e cuidado humano.
-                    </p>
-                    <div className="pt-2">
-                      <a 
-                        href="https://lorenapirescfp.substack.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center space-x-1 font-sans text-xs font-bold text-[#6fbc83] hover:text-[#5aa36e]"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <span>Acessar no Substack</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                      </a>
-                    </div>
                   </div>
                 </motion.div>
               )}
