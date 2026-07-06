@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown, Sparkles, Radio, Users, Target, Shield, ArrowRight, CheckCircle2, Bookmark } from "lucide-react";
+import { ChevronDown, Sparkles, Radio, Users, Target, Bookmark, ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function Projects() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -44,7 +44,7 @@ export default function Projects() {
           className="text-center max-w-2xl mx-auto"
         >
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6fbc83]">
-            Outros projetos que participo
+            Outros projetos dos quais participo
           </h2>
           <p className="font-sans text-base md:text-lg text-neutral-600 mt-4 leading-relaxed font-medium">
             Iniciativas e espaços onde compartilho conhecimentos sobre finanças, negócios e estratégia.
@@ -63,51 +63,60 @@ export default function Projects() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#6fbc83]/5 to-transparent rounded-full pointer-events-none"></div>
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                  {/* Left side: Deep text explanation */}
-            <div className="lg:col-span-6 space-y-6">
+            {/* Left side: Deep text explanation */}
+            <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center space-x-2 bg-[#6fbc83] text-white px-3.5 py-1.5 rounded-full shadow-sm select-none">
                 <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-                <span className="font-display font-extrabold text-xs sm:text-[10px] tracking-wider uppercase">Projeto Autoral</span>
+                <span className="font-display font-extrabold text-xs sm:text-[10px] tracking-wider uppercase font-semibold">Bastidor da Lore</span>
               </div>
               
               <div>
                 <h3 className="font-display font-extrabold text-3xl md:text-4xl text-neutral-950 tracking-tight leading-tight">
                   Bastidor
                 </h3>
-                <p className="font-sans text-sm sm:text-xs text-neutral-400 font-semibold tracking-wider uppercase mt-1">
-                  Lorem Ipsum Dolor & Sit Amet
-                </p>
               </div>
 
-              <div className="space-y-4 font-sans text-[15px] sm:text-sm text-neutral-600 font-medium leading-relaxed">
-                <p>
-                  Lorem ipsum <strong className="font-medium text-neutral-900">Dolor Sit Amet</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <div className="space-y-4 font-sans text-base sm:text-lg text-neutral-700 font-medium leading-relaxed">
+                <p className="text-neutral-900 font-semibold text-lg">
+                  Se você já oferece ou deseja oferecer atendimentos de planejamento financeiro para pequenos negócios, você deveria estar com a gente!
                 </p>
-                <p>
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p className="text-neutral-600">
+                  Minha melhor versão como mentora é mostrando a prática real. Em vez de caminhos prontos, trago para a mesa o que acontece nos bastidores:
                 </p>
               </div>
 
               {/* Bullet list of fields of action */}
-              <div className="space-y-2.5 pt-2">
+              <div className="space-y-3 pt-2">
                 {[
-                  "Lorem ipsum dolor sit amet, consectetur.",
-                  "Ut enim ad minim veniam, quis nostrud.",
-                  "Duis aute irure dolor in reprehenderit in.",
-                  "Excepteur sint occaecat cupidatat non proident."
+                  { title: "Casos Reais", desc: "Discussão de atendimentos meus ou de colegas." },
+                  { title: "Mão na Massa", desc: "Mergulhos conjuntos para mapear soluções e testar possibilidades." },
+                  { title: "Entregáveis", desc: "Acesso a todas as planilhas, propostas e roteiros desenvolvidos." }
                 ].map((item, index) => (
-                  <div key={index} className="flex items-center space-x-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#6fbc83] shrink-0" />
-                    <span className="font-sans text-sm sm:text-xs text-neutral-700 font-medium">
-                      {item}
+                  <div key={index} className="flex items-start space-x-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#6fbc83] shrink-0 mt-1" />
+                    <span className="font-sans text-base text-neutral-700 font-medium">
+                      <strong className="text-[#6fbc83] font-semibold">{item.title}:</strong> {item.desc}
                     </span>
                   </div>
                 ))}
               </div>
+
+              {/* CTA Link */}
+              <div className="pt-2">
+                <a 
+                  href="https://bastidordalore.substack.com/p/bastidor"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group cursor-pointer inline-flex items-center space-x-2 font-sans text-sm font-bold tracking-wide text-white bg-[#6fbc83] hover:bg-[#5aa36e] px-6 py-3 rounded-full transition-all duration-300 shadow-md"
+                >
+                  <span>Saiba Mais</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
             </div>
 
             {/* Right side: Modern Image Deck */}
-            <div className="lg:col-span-6 space-y-4">
+            <div className="lg:col-span-5 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 {/* Main large image */}
                 <div className="col-span-2 relative aspect-[21/9] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
@@ -153,8 +162,8 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        {/* 2. THE THREE EXPANDABLE PROJECTS BELOW BASTIDOR */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        {/* 2. FOUR EXPANDABLE PROJECTS BELOW BASTIDOR */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
           
           {/* Card A: Fofoca de Bolso */}
           <motion.div 
@@ -169,16 +178,16 @@ export default function Projects() {
             onClick={() => toggleExpand("fofoca")}
           >
             <div className="flex items-start justify-between">
-              <div className="flex items-center space-x-3.5">
+              <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 shrink-0">
                   <Radio className="w-5 h-5 text-[#6fbc83] animate-pulse" />
                 </div>
                 <div>
-                  <h4 className="font-display font-extrabold text-lg text-neutral-950 tracking-tight">
+                  <h4 className="font-display font-extrabold text-base text-neutral-950 tracking-tight">
                     Fofoca de Bolso
                   </h4>
-                  <p className="font-sans text-xs sm:text-[10px] text-neutral-400 font-medium uppercase tracking-wide mt-0.5">
-                    Dinheiro & Comportamento
+                  <p className="font-sans text-[10px] text-neutral-400 font-semibold uppercase tracking-wide mt-0.5">
+                    Podcast
                   </p>
                 </div>
               </div>
@@ -191,8 +200,8 @@ export default function Projects() {
               </motion.div>
             </div>
 
-            <p className="font-sans text-base sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
-              Levo as discussões sobre finanças para o microfone! No podcast Fofoca de Bolso, <strong className="text-[#6fbc83] font-semibold">desmistificamos a relação com o dinheiro</strong> de um jeito leve e sem as amarras tradicionais.
+            <p className="font-sans text-sm sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
+              Um podcast sobre inteligência financeira, feito por <strong className="text-[#6fbc83] font-semibold">planejadores financeiros independentes, em ritmo de contação de caso</strong> - porque planejamento financeiro é pra todo mundo, sim!
             </p>
 
             <AnimatePresence initial={false}>
@@ -205,7 +214,7 @@ export default function Projects() {
                   className="overflow-hidden"
                 >
                   <div className="pt-5 mt-5 border-t border-black/[0.06] space-y-4">
-                    <p className="font-sans text-[15px] sm:text-[15px] text-neutral-500 leading-relaxed font-medium">
+                    <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-medium">
                       No episódio mais recente, conversamos sobre os <strong className="text-[#6fbc83] font-semibold">desafios reais de quem decide mudar de rumo profissional</strong> de forma planejada. Dê o play para conferir!
                     </p>
 
@@ -233,7 +242,7 @@ export default function Projects() {
             </AnimatePresence>
           </motion.div>
 
-          {/* Card B: Supervisora Nossa */}
+          {/* Card B: Nossa */}
           <motion.div 
             layout
             initial={{ opacity: 0, y: 30 }}
@@ -241,26 +250,26 @@ export default function Projects() {
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             className={`bg-[#F0EEEE] rounded-[2rem] border p-6 shadow-sm transition-all duration-300 cursor-pointer overflow-hidden relative group ${
-              expandedId === "supervisora" ? "ring-2 ring-[#6fbc83] border-transparent" : "border-black/[0.04] hover:border-black/[0.08]"
+              expandedId === "nossa" ? "ring-2 ring-[#6fbc83] border-transparent" : "border-black/[0.04] hover:border-black/[0.08]"
             }`}
-            onClick={() => toggleExpand("supervisora")}
+            onClick={() => toggleExpand("nossa")}
           >
             <div className="flex items-start justify-between">
-              <div className="flex items-center space-x-3.5">
+              <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 shrink-0">
                   <Users className="w-5 h-5 text-[#6fbc83]" />
                 </div>
                 <div>
-                  <h4 className="font-display font-extrabold text-lg text-neutral-950 tracking-tight">
-                    Supervisora Nossa
+                  <h4 className="font-display font-extrabold text-base text-neutral-950 tracking-tight">
+                    Nossa
                   </h4>
-                  <p className="font-sans text-xs sm:text-[10px] text-neutral-400 font-medium uppercase tracking-wide mt-0.5">
-                    Orientação & Desenvolvimento
+                  <p className="font-sans text-[10px] text-neutral-400 font-semibold uppercase tracking-wide mt-0.5">
+                    Escola de Planejadores
                   </p>
                 </div>
               </div>
               <motion.div 
-                animate={{ rotate: expandedId === "supervisora" ? 180 : 0 }}
+                animate={{ rotate: expandedId === "nossa" ? 180 : 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="w-7 h-7 rounded-full bg-neutral-50 flex items-center justify-center text-neutral-400 shrink-0 group-hover:bg-neutral-100"
               >
@@ -268,12 +277,12 @@ export default function Projects() {
               </motion.div>
             </div>
 
-            <p className="font-sans text-base sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
-              Apoio os alunos da Nossa a transformarem conhecimento em uma <strong className="text-[#6fbc83] font-semibold">prática de planejamento segura, ética e humana</strong>.
+            <p className="font-sans text-sm sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
+              Atuo na Nossa – Escola para Planejadores Financeiros, onde <strong className="text-[#6fbc83] font-semibold">ofereço aulas e encontros de supervisão</strong> para colegas de profissão em formação ou supervisão.
             </p>
 
             <AnimatePresence initial={false}>
-              {expandedId === "supervisora" && (
+              {expandedId === "nossa" && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
@@ -282,10 +291,10 @@ export default function Projects() {
                   className="overflow-hidden"
                 >
                   <div className="pt-5 mt-5 border-t border-black/[0.06] space-y-4">
-                    <p className="font-sans text-[15px] sm:text-[15px] text-neutral-500 leading-relaxed font-medium">
+                    <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-medium">
                       Como supervisora, acompanho de perto a sua trajetória, ajudando a guiar os seus passos e a <strong className="text-[#6fbc83] font-semibold">desenhar soluções para os desafios práticos</strong> do dia a dia de atendimento.
                     </p>
-                    <p className="font-sans text-[15px] sm:text-[15px] text-neutral-500 leading-relaxed font-medium">
+                    <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-medium">
                       Acredito no planejamento pé no chão, focado nas ciências comportamentais para garantir que você atenda com <strong className="text-[#6fbc83] font-semibold">confiança, sensibilidade e excelência</strong>.
                     </p>
                   </div>
@@ -307,16 +316,16 @@ export default function Projects() {
             onClick={() => toggleExpand("workshops")}
           >
             <div className="flex items-start justify-between">
-              <div className="flex items-center space-x-3.5">
+              <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 shrink-0">
                   <Target className="w-5 h-5 text-[#6fbc83]" />
                 </div>
                 <div>
-                  <h4 className="font-display font-extrabold text-lg text-neutral-950 tracking-tight">
+                  <h4 className="font-display font-extrabold text-base text-neutral-950 tracking-tight">
                     Rodas e Workshops
                   </h4>
-                  <p className="font-sans text-xs sm:text-[10px] text-neutral-400 font-medium uppercase tracking-wide mt-0.5">
-                    Facilitação & Experiência
+                  <p className="font-sans text-[10px] text-neutral-400 font-semibold uppercase tracking-wide mt-0.5">
+                    Facilitação
                   </p>
                 </div>
               </div>
@@ -329,7 +338,7 @@ export default function Projects() {
               </motion.div>
             </div>
 
-            <p className="font-sans text-base sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
+            <p className="font-sans text-sm sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
               Conduzo rodas de conversa e workshops onde <strong className="text-[#6fbc83] font-semibold">traduzo as finanças de forma acessível</strong> para criar ambientes de clareza estratégica e soluções reais.
             </p>
 
@@ -343,10 +352,80 @@ export default function Projects() {
                   className="overflow-hidden"
                 >
                   <div className="pt-5 mt-5 border-t border-black/[0.06] space-y-4">
-                    <p className="font-sans text-[15px] sm:text-[15px] text-neutral-500 leading-relaxed font-medium">
+                    <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-medium">
                       <strong className="font-bold text-[#6fbc83] block mb-1">FOCO DA ATUAÇÃO:</strong>
                       Workshops práticos e rodas de conversa voltados para a <strong className="text-[#6fbc83] font-semibold">organização de finanças pessoais e a estruturação de pequenos negócios</strong>.
                     </p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Card D: Se pequenos negócios falassem… */}
+          <motion.div 
+            layout
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+            className={`bg-[#F0EEEE] rounded-[2rem] border p-6 shadow-sm transition-all duration-300 cursor-pointer overflow-hidden relative group ${
+              expandedId === "falassem" ? "ring-2 ring-[#6fbc83] border-transparent" : "border-black/[0.04] hover:border-black/[0.08]"
+            }`}
+            onClick={() => toggleExpand("falassem")}
+          >
+            <div className="flex items-start justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 shrink-0">
+                  <Bookmark className="w-5 h-5 text-[#6fbc83]" />
+                </div>
+                <div>
+                  <h4 className="font-display font-extrabold text-base text-neutral-950 tracking-tight leading-tight">
+                    Se pequenos negócios...
+                  </h4>
+                  <p className="font-sans text-[10px] text-neutral-400 font-semibold uppercase tracking-wide mt-0.5">
+                    Newsletter & Artigos
+                  </p>
+                </div>
+              </div>
+              <motion.div 
+                animate={{ rotate: expandedId === "falassem" ? 180 : 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="w-7 h-7 rounded-full bg-neutral-50 flex items-center justify-center text-neutral-400 shrink-0 group-hover:bg-neutral-100"
+              >
+                <ChevronDown className="w-4 h-4" />
+              </motion.div>
+            </div>
+
+            <p className="font-sans text-sm sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
+              Quinzenalmente, um texto novo compartilhando um pouco mais sobre os atendimentos que ofereço. O <strong className="text-[#6fbc83] font-semibold">planejamento financeiro para pequenos negócios precisa ir além dos números</strong>, e é sobre isso que eu escrevo.
+            </p>
+
+            <AnimatePresence initial={false}>
+              {expandedId === "falassem" && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-5 mt-5 border-t border-black/[0.06] space-y-4">
+                    <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-medium">
+                      Compartilho a minha forma de enxergar esse mundo, trazendo reflexões práticas sobre como gerenciar as finanças dos pequenos negócios com sabedoria, realismo e cuidado humano.
+                    </p>
+                    <div className="pt-2">
+                      <a 
+                        href="https://lorenapirescfp.substack.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center space-x-1 font-sans text-xs font-bold text-[#6fbc83] hover:text-[#5aa36e]"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Acessar no Substack</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </a>
+                    </div>
                   </div>
                 </motion.div>
               )}

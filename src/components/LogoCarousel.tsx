@@ -30,9 +30,6 @@ export default function LogoCarousel() {
         <h3 className="text-center font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#6fbc83]">
           Alguns dos clientes que já passaram por aqui
         </h3>
-        <p className="font-sans text-base md:text-lg text-neutral-600 mt-3 leading-relaxed font-medium max-w-2xl text-center">
-          Empresas que confiaram no meu trabalho para alcançar novos resultados.
-        </p>
       </div>
 
       <div className="relative w-full flex items-center">

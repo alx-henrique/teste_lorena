@@ -23,11 +23,19 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate safe API submission
+    const baseText = `Oi! Meu nome é ${formData.nome}. Vim pelo site e me interessei em saber mais sobre a consultoria financeira para ${formData.tipo}.`;
+    const msgText = formData.mensagem ? ` Mensagem: ${formData.mensagem}` : "";
+    const telText = formData.telefone ? ` Meu telefone/WhatsApp é: ${formData.telefone}.` : "";
+    
+    const text = `${baseText}${msgText}${telText}`;
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=5562999945420&text=${encodedText}&type=phone_number&app_absent=0`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-    }, 1200);
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    }, 800);
   };
 
   const resetForm = () => {
@@ -206,15 +214,28 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             ) : (
               /* Success screen resembling Apple receipts */
               <div className="flex flex-col items-center justify-center text-center py-8 space-y-5 animate-fade-in">
-                <CheckCircle2 className="w-16 h-16 text-neutral-900" />
+                <CheckCircle2 className="w-16 h-16 text-[#6fbc83]" />
                 <div className="space-y-2">
                   <h3 className="font-display text-2xl font-bold tracking-tight text-neutral-950">
-                    Mensagem Recebida!
+                    Sessão Solicitada!
                   </h3>
                   <p className="font-sans text-sm text-neutral-500 font-medium max-w-sm leading-relaxed">
-                    Olá <strong>{formData.nome}</strong>, obrigado pelo contato. Analisarei suas informações sobre <strong>{formData.tipo}</strong> e retornarei via WhatsApp ou e-mail em até 24 horas.
+                    Olá <strong>{formData.nome}</strong>, estamos abrindo o WhatsApp para enviar os detalhes da sua consultoria para <strong>{formData.tipo}</strong>.
+                  </p>
+                  <p className="font-sans text-xs text-neutral-400 font-medium max-w-sm pt-2">
+                    Se a página do WhatsApp não abrir automaticamente, clique no botão abaixo para iniciar a conversa:
                   </p>
                 </div>
+                
+                <a
+                  href={`https://api.whatsapp.com/send/?phone=5562999945420&text=${encodeURIComponent(`Oi! Meu nome é ${formData.nome}. Vim pelo site e me interessei em saber mais sobre a consultoria financeira para ${formData.tipo}.${formData.mensagem ? ` Mensagem: ${formData.mensagem}` : ""}`)}&type=phone_number&app_absent=0`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 font-sans text-sm font-semibold text-white bg-[#6fbc83] hover:bg-[#2e3925] px-6 py-3 rounded-xl transition-all duration-300 shadow-md"
+                >
+                  <span>Iniciar Conversa no WhatsApp</span>
+                </a>
+
                 <button
                   onClick={() => {
                     onClose();

@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
 import { 
   ArrowRight, 
-  Calendar,
   TrendingUp, 
   Coins, 
   Percent, 
@@ -31,17 +30,19 @@ export default function ConsultancyInfo({ onOpenContact }: ConsultancyInfoProps)
     },
     {
       icon: Shuffle,
-      desc: "Quer lidar melhor com a falta de previsibilidade"
+      desc: "Quer construir um caminho para que seja possível se aposentar"
     },
     {
       icon: Compass,
-      desc: "Quer ter autonomia e segurança para saber por quais caminhos seguir"
+      desc: "Busca um olhar sensível que integre o negócio com a pessoa, entendo que um faz parte do outro"
     },
     {
       icon: Flag,
       desc: "Quer começar um negócio de forma estratégica e sustentável"
     }
   ];
+
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0";
 
   return (
     <div className="bg-transparent py-8 md:py-10 overflow-hidden space-y-8 md:space-y-10">
@@ -53,14 +54,11 @@ export default function ConsultancyInfo({ onOpenContact }: ConsultancyInfoProps)
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-950 mt-3">
-            A consultoria é para quem
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-950 mt-3 leading-tight">
+            A consultoria é para o(a) autônomo(a) ou empreendedor(a) que…
           </h2>
-          <p className="font-sans text-[15px] sm:text-base text-neutral-500 mt-4 leading-relaxed font-medium">
-            Se você se identifica com algum dos cenários abaixo, o meu acompanhamento pode ser o que o seu negócio precisa hoje.
-          </p>
         </motion.div>
 
         {/* Beautiful Bento-like benefit list */}
@@ -102,66 +100,32 @@ export default function ConsultancyInfo({ onOpenContact }: ConsultancyInfoProps)
           {/* Subtle background abstract shape */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#6fbc83]/5 rounded-full blur-3xl pointer-events-none translate-x-20 -translate-y-20"></div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            {/* Left side: Info */}
-            <div className="lg:col-span-7 space-y-6">
-              <span className="font-sans text-sm sm:text-xs font-semibold tracking-widest text-[#6fbc83] uppercase flex items-center gap-1.5">
-                <Compass className="w-3.5 h-3.5" />
-                Sem compromisso
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950">
-                Primeiro Encontro
-              </h2>
-              <div className="space-y-4 font-sans text-[15px] sm:text-base md:text-lg text-neutral-600 font-medium leading-relaxed">
-                <p>
-                  Antes de qualquer planejamento, precisamos olhar para a realidade do seu negócio. Neste momento inicial, meu foco é escutar a sua história, entender os gargalos da operação e mapear o que está travando o seu crescimento.
-                </p>
-                <p>
-                  É uma conversa direta e produtiva. O objetivo não é vender uma fórmula mágica, mas sim desenhar um caminho seguro para que você tenha mais clareza, previsibilidade e lucro no final do mês.
-                </p>
-              </div>
-
-              <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
-                <button
-                  onClick={onOpenContact}
-                  className="w-full sm:w-auto group cursor-pointer flex items-center justify-center space-x-2 font-sans text-sm sm:text-xs font-bold tracking-widest text-white bg-[#6fbc83] hover:bg-neutral-900 px-6 py-3.5 rounded-full transition-all duration-300 uppercase"
-                >
-                  <span>quero marcar!</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <span className="font-sans text-sm text-neutral-400 font-medium whitespace-nowrap">
-                  Tempo médio: <strong className="text-neutral-700">45 minutos</strong>
-                </span>
-              </div>
+          <div className="relative z-10 max-w-3xl mx-auto space-y-6">
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950">
+              Primeiro Encontro
+            </h2>
+            <div className="space-y-4 font-sans text-[15px] sm:text-base md:text-lg text-neutral-600 font-medium leading-relaxed">
+              <p>
+                Cada pessoa e cada empresa são únicas. É por isso que não acredito que soluções e caminhos possam ser construídos de forma padronizada, em linha de montagem. São as particularidades de cada caso que ditam qual vai ser a melhor condução: número de encontros, forma de pagamento, escopo e tempo de acompanhamento.
+              </p>
+              <p>
+                É por isso que tudo começa com a escuta. A gente marca uma conversa on-line (algo entre 20 e 30 minutos) para você me contar o que está acontecendo, e a partir daí eu desenvolvo uma proposta de trabalho focada no que você precisa. Essa conversa é gratuita e é o nosso ponto de partida!
+              </p>
             </div>
 
-            {/* Right side: Modern graphic representation / aesthetic focal point */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="w-full max-w-[280px] aspect-[4/5] rounded-[2rem] bg-white border border-black/[0.03] shadow-lg p-6 flex flex-col justify-between relative">
-                
-                {/* Floating pill badge */}
-                <div className="absolute -top-3 left-6 bg-[#2e3925] text-white font-sans text-xs sm:text-[9px] font-bold tracking-widest uppercase px-3 py-1 rounded-full shadow-md">
-                  100% gratuito
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#6fbc83]"></div>
-                    <span className="font-sans text-xs sm:text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Descoberta</span>
-                  </div>
-                  <h4 className="font-display font-extrabold text-2xl text-neutral-950 tracking-tight leading-snug">
-                    Sessão de <br/>Diagnóstico
-                  </h4>
-                  <p className="font-sans text-sm text-neutral-500 font-medium leading-relaxed">
-                    Análise inicial detalhada para mapear desafios e oportunidades reais do negócio.
-                  </p>
-                </div>
-
-                <div className="border-t border-neutral-100 pt-4 flex items-center justify-between">
-                  <span className="font-sans text-xs sm:text-[11px] text-neutral-400 font-medium">Tempo estimado</span>
-                  <span className="font-sans text-sm font-bold text-neutral-800 bg-neutral-50 px-2.5 py-1 rounded-lg">~45 Min</span>
-                </div>
-              </div>
+            <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto group flex items-center justify-center space-x-2 font-sans text-sm sm:text-xs font-bold tracking-widest text-white bg-[#6fbc83] hover:bg-neutral-900 px-8 py-4 rounded-full transition-all duration-300 uppercase shadow-md hover:shadow-lg"
+              >
+                <span>QUERO MARCAR</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <span className="font-sans text-sm text-neutral-400 font-medium whitespace-nowrap">
+                Tempo médio: <strong className="text-neutral-700">30 minutos</strong>
+              </span>
             </div>
           </div>
         </motion.div>

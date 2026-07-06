@@ -82,11 +82,8 @@ export default function Testimonials() {
           className="text-center max-w-2xl mx-auto mb-10 md:mb-12"
         >
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6fbc83]">
-            Depoimentos de quem passou por aqui
+            Histórias reais de quem já passou pelo processo de planejamento financeiro com a Lore
           </h2>
-          <p className="font-sans text-base md:text-lg text-neutral-600 mt-4 leading-relaxed font-medium">
-            Histórias reais de quem transformou a sua organização financeira e alcançou novos patamares.
-          </p>
         </motion.div>
 
         {/* Mobile Swipe Hint */}

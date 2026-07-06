@@ -27,7 +27,7 @@ export default function LearnMore({ openContact }: LearnMoreProps) {
           >
             <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
               <img 
-                src="https://res.cloudinary.com/drrbezrpk/image/upload/v1783000000/design-sem-nome-AoPvrqL3KVfbBQeq_jwkugr.avif" 
+                src="https://res.cloudinary.com/drrbezrpk/image/upload/v1782950670/Captura_de_tela_2026-07-01_210511_klbdxp.png" 
                 alt="Lorena" 
                 className="w-full aspect-[4/5] object-cover"
               />
@@ -44,16 +44,16 @@ export default function LearnMore({ openContact }: LearnMoreProps) {
               Mais sobre mim
             </h1>
             <p>
-              Comecei a minha carreira como planejadora financeira em 2018 na Papo de Valor, empresa da qual fiz parte até 2024. Por lá, comecei atendendo pessoas físicas. Talvez por isso, ainda que atendendo negócios, o <strong className="text-[#6fbc83] font-semibold">meu ponto de partida são as pessoas e vidas envolvidas ali</strong>, e não só números, gráficos, indicadores e processos. Vai além. E que bom!
+              Comecei minha carreira como planejadora financeira independente em 2018, época em que atendia exclusivamente pessoas físicas. Talvez por isso, ainda que hoje meu foco seja o atendimento de pequenos negócios, o <strong className="text-[#6fbc83] font-semibold">meu ponto de partida continua sendo as pessoas e as vidas envolvidas ali</strong> e não apenas números, gráficos, indicadores e processos. Vai muito além disso. E que bom que é assim!
             </p>
             <p>
-              Além das consultorias, também ofereço palestras, workshops, aulas, rodas de conversas, sempre com o intuito de <strong className="text-[#6fbc83] font-semibold">trazer o assunto “grana” pra mesa, e de uma forma clara, realista e acessível</strong>.
+              Além das consultorias, também ofereço palestras, supervisão para colegas de profissão, workshops, rodas de conversa, sempre com o propósito de <strong className="text-[#6fbc83] font-semibold">trazer o assunto "grana" para a mesa de forma clara, realista e acessível</strong>.
             </p>
             <p>
-              Por entender o impacto do meu trabalho é que sempre me preocupei em <strong className="text-[#6fbc83] font-semibold">seguir estudando e me aperfeiçoando</strong>. Sou engenheira civil formada pela UFG, fiz mestrado na mesma faculdade, e desde que migrei para a área de planejamento financeiro me preocupei em seguir me desenvolvendo. 
+              Por entender o impacto do meu trabalho, sempre me preocupei em continuar estudando e me aperfeiçoando. Sou engenheira civil formada pela UFG, onde também fiz mestrado, e desde que migrei para o planejamento financeiro, me preocupo em seguir me desenvolvendo. 
             </p>
             <p>
-              De lá pra cá já fiz muitos cursos e tirei algumas certificações, mas quero dar destaque àquelas que mais me marcaram: em 2021 tirei a <strong className="text-[#6fbc83] font-semibold">certificação CFP pela Planejar</strong>, em 2024 fui aluna da Nossa - Escola para Planejadores Financeiros (escola onde sigo em supervisão) e hoje sou <strong className="text-[#6fbc83] font-semibold">pós-graduanda em Gestão de Negócios pela USP/Esalq</strong>. E este é só começo. Ter o hábito de estudar faz parte de ser a profissional que me orgulho em ser.
+              Atualmente, sou <strong className="text-[#6fbc83] font-semibold">pós-graduanda em Gestão de Negócios na USP/Esalq</strong>, aluna e supervisora da <strong className="text-[#6fbc83] font-semibold">Nossa – Escola para Planejadores Financeiros</strong>, e possuo a <strong className="text-[#6fbc83] font-semibold">certificação CFP®</strong>, a mais respeitada certificação internacional de planejamento financeiro.
             </p>
             
             <div className="pt-8">

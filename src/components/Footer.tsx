@@ -1,4 +1,5 @@
-import { ArrowUp, Mail, Linkedin, Globe } from "lucide-react";
+import { ArrowUp, Mail, Linkedin, Globe, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -14,24 +15,24 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           
           {/* Column 1: Brand & Bio */}
-          <div className="md:col-span-2 space-y-4">
-            <h3 className="font-display font-semibold tracking-tight text-lg text-black">
-              Lorena
+          <div className="md:col-span-3 space-y-4">
+            <h3 className="font-display font-bold tracking-tight text-xl text-black">
+              LORENA PIRES
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-neutral-400 font-medium max-w-sm leading-relaxed">
-              Planejamento financeiro com clareza, ética e foco nas pessoas por trás dos números. Consultoria de alta performance para indivíduos, autônomos e pequenas empresas.
+            <p className="font-sans text-xs sm:text-sm text-neutral-500 font-medium max-w-xl leading-relaxed">
+              Planejamento financeiro para autônomos e pequenos negócios que desejam gerir, gastar e investir seu dinheiro com estratégia e inteligência, com foco em suas prioridades particulares.
             </p>
             
             {/* Social channels */}
             <div className="flex items-center space-x-4 pt-2">
               <a
-                href="https://linkedin.com"
+                href="https://www.instagram.com/lorenapires.cfp/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 hover:text-black transition-colors"
-                aria-label="LinkedIn"
+                aria-label="Instagram"
               >
-                <Linkedin className="w-4 h-4" />
+                <Instagram className="w-4 h-4" />
               </a>
               <a
                 href="https://lorenapirescfp.substack.com/?utm_source=global-search"
@@ -52,26 +53,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Links */}
-          <div className="space-y-4">
-            <h4 className="font-sans text-xs font-semibold uppercase tracking-wider text-neutral-400">
-              Serviços
-            </h4>
-            <ul className="space-y-2">
-              {[
-                "Planejamento Individual",
-                "Estruturação de Autônomos",
-                "Consultoria Corporativa",
-                "Otimização Tributária"
-              ].map((serv, idx) => (
-                <li key={idx} className="font-sans text-xs sm:text-sm text-neutral-500 font-medium">
-                  {serv}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Navigation */}
+          {/* Column 2: Navigation */}
           <div className="space-y-4">
             <h4 className="font-sans text-xs font-semibold uppercase tracking-wider text-neutral-400">
               Navegação
@@ -81,7 +63,7 @@ export default function Footer() {
                 { label: "Home", id: "home" },
                 { label: "Sobre mim", id: "sobre-mim" },
                 { label: "Depoimentos", id: "depoimentos" },
-                { label: "Perguntas Frequentes", id: "faq" }
+                { label: "Bastidor", id: "projetos" }
               ].map((nav, idx) => (
                 <li key={idx}>
                   <a

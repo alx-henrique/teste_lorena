@@ -27,7 +27,7 @@ export default function Newsletter() {
             </h2>
             
             <p className="font-sans text-[15px] sm:text-base md:text-lg text-neutral-200/90 font-medium leading-relaxed">
-              Quinzenalmente um texto novo compartilhando um pouco mais sobre como enxergo finanças e empreendedorismo.
+              Quinzenalmente, um texto novo compartilhando um pouco mais sobre os atendimentos que ofereço e também sobre a minha forma de enxergar esse mundo. <strong className="text-[#6fbc83] font-semibold">O planejamento financeiro para pequenos negócios precisa ir além dos números</strong>, e é sobre isso que eu escrevo.
             </p>
 
             <div className="pt-4 flex">

@@ -76,8 +76,8 @@ export default function About() {
                 referrerPolicy="no-referrer"
               />
               <div>
-                <p className="font-display text-sm sm:text-base font-extrabold text-[#6fbc83]">Lorena</p>
-                <p className="font-sans text-xs sm:text-sm text-neutral-500 font-medium">Lorena Pires Carvalho & CFP® CVM</p>
+                <p className="font-display text-sm sm:text-base font-extrabold text-[#6fbc83]">Lorena Pires Carvalho</p>
+                <p className="font-sans text-xs sm:text-sm text-neutral-500 font-medium">CFP® & CVM</p>
               </div>
             </div>
           </motion.div>
