@@ -11,19 +11,14 @@ export default function Projects() {
 
   const images = [
     {
-      url: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80",
-      alt: "Estratégia e Planejamento Corporativo",
-      title: "Análise Estrutural"
+      url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784133155/1_Encontro_2026_1_ijxdvi.jpg",
+      alt: "Bastidor da Lore - Encontro 1",
+      title: "Encontro Presencial"
     },
     {
-      url: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
-      alt: "Liderança e Alinhamento Financeiro",
-      title: "Mentoria Executiva"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
-      alt: "Indicadores e Métricas de Sucesso",
-      title: "Crescimento Sustentável"
+      url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784133155/1_Encontro_2026_brggw2.jpg",
+      alt: "Bastidor da Lore - Encontro 2",
+      title: "Planejamento e Troca"
     }
   ];
 
@@ -115,24 +110,24 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Right side: Modern Image Deck */}
+            {/* Right side: Modern Image Deck (Two Photos Side-by-Side) */}
             <div className="lg:col-span-5 space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                {/* Main large image */}
-                <div className="col-span-2 relative aspect-[21/9] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
+                {/* Photo 1 */}
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
                   <img 
                     src={images[0].url} 
                     alt={images[0].alt} 
                     loading="lazy"
                     className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 transition-all duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-4">
-                    <span className="font-sans text-xs sm:text-[10px] font-bold text-white uppercase tracking-widest">{images[0].title}</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-3">
+                    <span className="font-sans text-xs sm:text-[9px] font-bold text-white uppercase tracking-widest">{images[0].title}</span>
                   </div>
                 </div>
 
-                {/* Sub image 1 */}
-                <div className="relative aspect-square rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
+                {/* Photo 2 */}
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
                   <img 
                     src={images[1].url} 
                     alt={images[1].alt} 
@@ -141,19 +136,6 @@ export default function Projects() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-3">
                     <span className="font-sans text-xs sm:text-[9px] font-bold text-white uppercase tracking-widest">{images[1].title}</span>
-                  </div>
-                </div>
-
-                {/* Sub image 2 */}
-                <div className="relative aspect-square rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
-                  <img 
-                    src={images[2].url} 
-                    alt={images[2].alt} 
-                    loading="lazy"
-                    className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 transition-all duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-3">
-                    <span className="font-sans text-xs sm:text-[9px] font-bold text-white uppercase tracking-widest">{images[2].title}</span>
                   </div>
                 </div>
               </div>

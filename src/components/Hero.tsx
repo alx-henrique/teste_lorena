@@ -4,10 +4,32 @@ import { motion } from "motion/react";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [imageSrc, setImageSrc] = useState("https://res.cloudinary.com/drrbezrpk/image/upload/v1783000000/Untitled-1_r6yx8s.png");
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  const handleImageError = () => {
+    if (retryCount === 0) {
+      // Try JPG extension
+      setImageSrc("https://res.cloudinary.com/drrbezrpk/image/upload/v1783000000/Untitled-1_r6yx8s.jpg");
+      setRetryCount(1);
+    } else if (retryCount === 1) {
+      // Try without version
+      setImageSrc("https://res.cloudinary.com/drrbezrpk/image/upload/Untitled-1_r6yx8s.png");
+      setRetryCount(2);
+    } else if (retryCount === 2) {
+      // Try without version and with jpg
+      setImageSrc("https://res.cloudinary.com/drrbezrpk/image/upload/Untitled-1_r6yx8s.jpg");
+      setRetryCount(3);
+    } else if (retryCount === 3) {
+      // Final fallback to the high-quality portrait that is known to work
+      setImageSrc("https://res.cloudinary.com/drrbezrpk/image/upload/v1782950670/Captura_de_tela_2026-07-01_210511_klbdxp.png");
+      setRetryCount(4);
+    }
+  };
 
   return (
     <section
@@ -17,9 +39,10 @@ export default function Hero() {
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 bg-black">
         <img
-          src="https://res.cloudinary.com/drrbezrpk/image/upload/v1783000000/Untitled-1_r6yx8s.png"
+          src={imageSrc}
           alt="Lorena"
           fetchPriority="high"
+          onError={handleImageError}
           className="w-full h-full object-cover object-center md:object-[80%_center] opacity-100"
         />
         {/* Dark overlay for text readability */}

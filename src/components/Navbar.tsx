@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
-interface NavbarProps {
-  onOpenContact: () => void;
-}
-
-export default function Navbar({ onOpenContact }: NavbarProps) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -94,12 +90,14 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             </a>
           </div>
 
-          <button
-            onClick={onOpenContact}
+          <a
+            href="https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0"
+            target="_blank"
+            rel="noopener noreferrer"
             className="cursor-pointer font-sans text-[11px] lg:text-xs font-bold uppercase tracking-wider text-white bg-[#6fbc83] hover:bg-[#5aa36e] px-6 py-3 rounded-full transition-all duration-300 transform active:scale-98 shadow-sm"
           >
             Contato
-          </button>
+          </a>
         </nav>
       </div>
 
@@ -131,12 +129,14 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
 
           {/* Mobile CTA & Menu Trigger */}
           <div className="flex items-center space-x-3">
-            <button
-              onClick={onOpenContact}
+            <a
+              href="https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
               className="cursor-pointer font-sans text-[10px] font-bold uppercase tracking-wider text-white bg-[#6fbc83] hover:bg-[#5aa36e] px-3 py-1.5 rounded-full transition-all duration-300 shadow-sm"
             >
               Contato
-            </button>
+            </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-1.5 text-black/80 hover:text-black transition-colors focus:outline-none cursor-pointer"

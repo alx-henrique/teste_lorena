@@ -74,7 +74,7 @@ export default function App() {
 
       {/* Foreground Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        <Navbar onOpenContact={openContact} />
+        <Navbar />
         
         <Routes>
           <Route path="/" element={<HomePage />} />

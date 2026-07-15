@@ -13,31 +13,56 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Isis",
-    role: "Canela Pet e Café",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&h=120&q=80",
-    feedback: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+    name: "Livia Leite",
+    role: "Estúdio Maré",
+    avatar: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132372/Livia_Leite_-_Est%C3%BAdio_Mar%C3%A9_az85yl.jpg",
+    feedback: `A consultoria me ajudou muito a entender onde a minha empresa se encontra, definir onde queremos chegar e qual é o caminho para isso. 
+
+A metodologia da Lorena me deu mais confiança para lidar com os processos dentro da empresa e também me ajudou a estruturar toda a parte financeira do meu negócio!`
   },
   {
     id: 2,
-    name: "Thais Helena",
+    name: "Adeyc Borges",
     role: "",
-    avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=120&h=120&q=80",
-    feedback: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
+    avatar: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132420/Adeyc_Borges_nh25yy.jpg",
+    feedback: `Existem pessoas que fazem muito mais do que prestar um serviço: elas caminham ao nosso lado nos momentos mais importantes. A Lorena foi exatamente essa pessoa para mim.
+
+Ela chegou em um dos períodos mais desafiadores da minha trajetória profissional, quando eu estava recomeçando e precisava tomar decisões importantes para construir uma empresa sólida. Sempre fui apaixonado pelo que faço, mas administrar as finanças de um negócio era um grande desafio para mim.
+
+Em cada reunião, a Lorena me ajudava a enxergar o cenário com clareza. Juntos analisávamos cada passo, decidíamos o que fazia sentido naquele momento, o que precisava esperar e quais eram os caminhos mais seguros para o crescimento da minha marca. Esse suporte foi essencial para que eu tomasse decisões com mais confiança e responsabilidade.
+
+Hoje posso dizer que grande parte da tranquilidade que tenho para gerir o meu negócio vem desse acompanhamento. Afinal, a saúde financeira é a base de qualquer empresa que deseja crescer de forma sustentável.
+
+Sou muito grato à Lorena por todo o profissionalismo, dedicação e parceria. E mais do que uma consultora financeira, ela se tornou alguém em quem confio para me orientar nas decisões mais importantes da minha empresa. Recomendo o trabalho dela de olhos fechados.`
   },
   {
     id: 3,
-    name: "Carol",
-    role: "Arte da Conversa",
-    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=120&h=120&q=80",
-    feedback: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+    name: "Claudia Kievel",
+    role: "Jardim Secreto",
+    avatar: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132418/Claudia_Kievel_-_Jardim_Secreto_reqxed.png",
+    feedback: `Ter começado a consultoria financeira com a Lorena foi essencial para entender que precisava de uma organização e revisão mais aprofundada das questões administrativas, burocráticas e dos números do meu negócio. 
+
+Com ela pude entender como ser a administradora que meu negócio precisava - e que eu nem achava que conseguiria ser - mesmo não sendo a minha área de atuação ou formação, mas por ser uma necessidade e responsabilidade dentro da empresa.
+
+Me sinto cada vez mais tranquila e consciente com o meu negócio. Tanto na visão do dia a dia, como numa visão mais macro. 
+
+Me sinto no controle e claro, mais em paz!`
   },
   {
     id: 4,
-    name: "Ste",
+    name: "Stephanie",
     role: "Ondas Buenas",
-    avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=120&h=120&q=80",
-    feedback: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet."
+    avatar: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132419/Stephanie_-_Ondas_Buenas_hdaiol.png",
+    feedback: `Adoro o tema, tento estudar sobre na medida do possível e pensava que poderia fazer tudo sozinha, com meus papéis e tabelinhas do excel. Que iludida! 
+
+Ter o conhecimento da Lorena fez eu entender que era uma necessidade da minha empresa essa atenção mais detalhada para o financeiro e tudo que atravessa esse campo. 
+
+Ela é uma profissional muito atenta e o que mais me encantou é que não toma uma decisão sem antes pensar junto, entender a realidade, que é particular de cada um.
+
+Com ela pude me sentir mais segura para seguir dirigindo meu negócio, assim como dando mais razão ao que acredito onde minha marca pode chegar. Hoje, posso afirmar que tenho além de contas, números organizados e calculados, tenho consciência do rumo que meu negócio está tomando e que consequências o movimento dele pode resultar. Obrigada, Lore!
+
+Como falamos na Argentina: 
+vamos por más!`
   }
 ];
 
@@ -82,7 +107,7 @@ export default function Testimonials() {
           className="text-center max-w-2xl mx-auto mb-10 md:mb-12"
         >
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6fbc83]">
-            Histórias reais de quem já passou pelo processo de planejamento financeiro com a Lore
+            Histórias reais de quem já passou pelo processo de planejamento financeiro
           </h2>
         </motion.div>
 
@@ -135,9 +160,11 @@ export default function Testimonials() {
                 </div>
 
                 {/* Feedback Text */}
-                <p className="font-sans text-[15px] sm:text-sm text-white leading-relaxed font-medium mb-6">
-                  "{t.feedback}"
-                </p>
+                <div className="max-h-[280px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+                  <p className="whitespace-pre-wrap font-sans text-[15px] sm:text-sm text-white leading-relaxed font-medium mb-4">
+                    "{t.feedback}"
+                  </p>
+                </div>
               </div>
 
               {/* iOS-Style Avatar & Identity Info */}
