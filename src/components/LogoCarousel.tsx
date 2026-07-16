@@ -3,6 +3,12 @@ import { motion } from "motion/react";
 export default function LogoCarousel() {
   // Collection of actual client logo images, keeping all monochrome (grayscale)
   const logos = [
+    { name: "Tre Fotografia", url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784233090/tre-fotografia_zdh5sf.png" },
+    { name: "Grupo M", url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784233090/grupom-logo_copy_p3npqg.png" },
+    { name: "Lavanda Digital", url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784233090/lavandadigital-loog_copy_b324kg.png" },
+    { name: "Diana Córdoba", url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784233090/diana-c%C3%B3rdoba_wjfywu.png" },
+    { name: "Arte da Conversa", url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784233090/logotipo-arte-da-conversa_xaqgrg.png" },
+    { name: "Cachalote Mariel", url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784233089/cachalote-mariel_xugyxr.png" },
     { name: "Claraboia", url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132989/claraboia_ttsdxv.png" },
     { name: "Marcelo Eco", url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132990/marcelo-eco_rbwcdg.png" },
     { name: "Jardim Secreto", url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132990/jardim-secreto_z3ncvs.png" },

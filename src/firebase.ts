@@ -43,6 +43,11 @@ export async function ensureAdminInitialized() {
         token: defaultToken,
         createdAt: Date.now()
       });
+
+      await setDoc(doc(db, "admin_tokens", defaultToken), {
+        hash: defaultHash,
+        createdAt: Date.now()
+      });
       
       await setDoc(initRef, {
         initialized: true,
@@ -100,7 +105,19 @@ export async function verifyFirebaseLogin(password: string): Promise<{ success: 
     
     if (adminSnap.exists()) {
       const data = adminSnap.data();
-      return { success: true, token: data.token || hash };
+      const token = data.token || hash;
+
+      // Register the token dynamically in admin_tokens to authorize rules
+      try {
+        await setDoc(doc(db, "admin_tokens", token), {
+          hash: hash,
+          createdAt: Date.now()
+        });
+      } catch (tokenErr) {
+        console.warn("Failed to register token in admin_tokens collection:", tokenErr);
+      }
+
+      return { success: true, token: token };
     } else {
       return { success: false, error: "Senha incorreta" };
     }
@@ -124,6 +141,9 @@ export async function changeFirebasePassword(
       return { success: false, error: "Senha antiga incorreta." };
     }
     
+    const oldData = adminSnap.data();
+    const oldToken = oldData.token;
+
     // Create new hash
     const newHash = await hashPassword(newPassword);
     const newToken = "token_" + Math.random().toString(36).substring(2) + Date.now().toString(36);
@@ -133,9 +153,24 @@ export async function changeFirebasePassword(
       token: newToken,
       createdAt: Date.now()
     });
+
+    // Save new token in admin_tokens
+    await setDoc(doc(db, "admin_tokens", newToken), {
+      hash: newHash,
+      createdAt: Date.now()
+    });
     
     // Delete old password document
     await deleteDoc(adminRef);
+
+    // Delete old token document
+    if (oldToken) {
+      try {
+        await deleteDoc(doc(db, "admin_tokens", oldToken));
+      } catch (delErr) {
+        console.warn("Failed to delete old token document:", delErr);
+      }
+    }
     
     return { success: true, token: newToken };
   } catch (err: any) {

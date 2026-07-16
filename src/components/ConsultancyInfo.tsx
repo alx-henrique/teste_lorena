@@ -55,7 +55,7 @@ export default function ConsultancyInfo() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-950 mt-3 leading-tight">
-            A consultoria é para o(a) autônomo(a) ou empreendedor(a) que…
+            A consultoria é para o(a) empreendedor(a) que…
           </h2>
         </motion.div>
 

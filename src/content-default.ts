@@ -40,7 +40,7 @@ export const DEFAULT_CONTENT: WebsiteContent = {
   heroCtaText: "Quero agendar minha conversa",
   heroCtaLink: "https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0",
   aboutMeRole: "CFP® & Consultora CVM Certificada",
-  aboutMeBodyText1: "Como consultora CVM certificada, no meu dia a dia ofereço consultoria financeira individual para autônomos e pequenos negócios que querem olhar com inteligência e estratégia para a forma como geram e cuidam do dinheiro.",
+  aboutMeBodyText1: "Como planejadora financeira independente, no meu dia a dia ofereço consultoria financeira para autônomos e pequenos negócios que querem olhar com inteligência e estratégia para a forma como geram e cuidam do dinheiro.",
   aboutMeBodyText2: "Acredito que finanças não precisam ser um bicho de sete cabeças e nem uma planilha fria e sem vida. É possível gerir um negócio de forma sustentável, mantendo a leveza, a saúde mental e a essência do que você faz.",
   stat1Value: "+210",
   stat1Text: "Pessoas físicas e profissionais autônomos",

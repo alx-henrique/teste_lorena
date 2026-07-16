@@ -19,6 +19,15 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
       try {
         const fbContent = await loadFirebaseContent();
         if (fbContent) {
+          // If the stored content has the old About Me text, migrate it automatically to the new requested one
+          if (fbContent.aboutMeBodyText1 && (
+            fbContent.aboutMeBodyText1.includes("Como consultora CVM") || 
+            fbContent.aboutMeBodyText1.includes("consultoria financeira individual") ||
+            fbContent.aboutMeBodyText1.includes("CVM certificada") ||
+            !fbContent.aboutMeBodyText1.includes("independente")
+          )) {
+            fbContent.aboutMeBodyText1 = DEFAULT_CONTENT.aboutMeBodyText1;
+          }
           // Merge defaults with returned content to handle partial updates or new keys
           setContent({ ...DEFAULT_CONTENT, ...fbContent });
         } else {
@@ -27,6 +36,14 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
             const response = await fetch("/api/content");
             if (response.ok) {
               const data = await response.json();
+              if (data.aboutMeBodyText1 && (
+                data.aboutMeBodyText1.includes("Como consultora CVM") || 
+                data.aboutMeBodyText1.includes("consultoria financeira individual") ||
+                data.aboutMeBodyText1.includes("CVM certificada") ||
+                !data.aboutMeBodyText1.includes("independente")
+              )) {
+                data.aboutMeBodyText1 = DEFAULT_CONTENT.aboutMeBodyText1;
+              }
               setContent({ ...DEFAULT_CONTENT, ...data });
             }
           } catch (apiErr) {

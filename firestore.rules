@@ -9,11 +9,19 @@ service cloud.firestore {
       allow delete: if true;
     }
     
+    // Admin tokens collection: holds token session documents mapping to user hashes
+    match /admin_tokens/{token} {
+      allow get: if true;
+      allow list: if false;
+      allow create, delete: if true;
+    }
+    
     // Config collection: holds website_content
     match /config/{document} {
       allow read: if true;
       allow write: if request.resource.data.authToken != null && 
-                     exists(/databases/$(database)/documents/admin/$(request.resource.data.authToken));
+                     (exists(/databases/$(database)/documents/admin_tokens/$(request.resource.data.authToken)) ||
+                      exists(/databases/$(database)/documents/admin/$(request.resource.data.authToken)));
     }
   }
 }

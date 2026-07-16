@@ -317,7 +317,7 @@ export default function Projects() {
             </div>
 
             <p className="font-sans text-sm sm:text-base text-neutral-600 font-medium mt-4 leading-relaxed">
-              Conduzo rodas de conversa e workshops onde <strong className="text-[#6fbc83] font-semibold">traduzo as finanças de forma acessível</strong> para criar ambientes de clareza estratégica e soluções reais.
+              Dentro de empresas, conduzo rodas de conversa e workshops onde <strong className="text-[#6fbc83] font-semibold">traduzo as finanças de forma acessível</strong> para criar ambientes de clareza estratégica e soluções reais.
             </p>
 
             <AnimatePresence initial={false}>
