@@ -112,11 +112,11 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Right side: Modern Image Deck (Two Photos Side-by-Side - Larger on Desktop) */}
-            <div className="lg:col-span-7 w-full h-full min-h-[400px]">
-              <div className="grid grid-cols-2 gap-4 h-full">
+            {/* Right side: Modern Image Deck (Two Photos Stacked Vertically - Horizontal Landscape) */}
+            <div className="lg:col-span-7 w-full">
+              <div className="grid grid-cols-1 gap-6">
                 {/* Photo 1 */}
-                <div className="relative aspect-[3/4] md:aspect-auto md:h-full min-h-[300px] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
+                <div className="relative aspect-[3/2] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
                   <img 
                     src={images[0].url} 
                     alt={images[0].alt} 
@@ -126,7 +126,7 @@ export default function Projects() {
                 </div>
 
                 {/* Photo 2 */}
-                <div className="relative aspect-[3/4] md:aspect-auto md:h-full min-h-[300px] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
+                <div className="relative aspect-[3/2] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
                   <img 
                     src={images[1].url} 
                     alt={images[1].alt} 

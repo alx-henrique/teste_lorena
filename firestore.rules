@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Admin collection: holds hashed password documents containing a token
+    match /admin/{hash} {
+      allow get: if true;
+      allow list: if false;
+      allow create: if true;
+      allow delete: if true;
+    }
+    
+    // Config collection: holds website_content
+    match /config/{document} {
+      allow read: if true;
+      allow write: if request.resource.data.authToken != null && 
+                     exists(/databases/$(database)/documents/admin/$(request.resource.data.authToken));
+    }
+  }
+}

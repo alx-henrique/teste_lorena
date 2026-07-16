@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { WebsiteContent, DEFAULT_CONTENT } from "../content-default";
+import { loadFirebaseContent, saveFirebaseContent } from "../firebase";
 
 interface ContentContextType {
   content: WebsiteContent;
@@ -16,14 +17,24 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     async function loadContent() {
       try {
-        const response = await fetch("/api/content");
-        if (response.ok) {
-          const data = await response.json();
+        const fbContent = await loadFirebaseContent();
+        if (fbContent) {
           // Merge defaults with returned content to handle partial updates or new keys
-          setContent({ ...DEFAULT_CONTENT, ...data });
+          setContent({ ...DEFAULT_CONTENT, ...fbContent });
+        } else {
+          // If no content in Firebase, try to fetch from local API fallback
+          try {
+            const response = await fetch("/api/content");
+            if (response.ok) {
+              const data = await response.json();
+              setContent({ ...DEFAULT_CONTENT, ...data });
+            }
+          } catch (apiErr) {
+            console.log("Local API fallback failed or not available, using defaults.");
+          }
         }
       } catch (error) {
-        console.error("Failed to load dynamic content, using defaults:", error);
+        console.error("Failed to load dynamic content:", error);
       } finally {
         setIsLoading(false);
       }
@@ -33,21 +44,29 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
 
   const updateContent = async (newContent: WebsiteContent, token: string) => {
     try {
-      const response = await fetch("/api/content", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify(newContent)
-      });
-
-      if (response.ok) {
+      // First try to save to Firebase
+      const result = await saveFirebaseContent(newContent, token);
+      if (result.success) {
         setContent(newContent);
+        
+        // Also try to sync with backend API if available (optional fallback)
+        try {
+          await fetch("/api/content", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(newContent)
+          });
+        } catch (apiErr) {
+          // Silent catch since Firebase already succeeded
+          console.log("API save failed, Firebase was used.");
+        }
+        
         return { success: true };
       } else {
-        const errData = await response.json();
-        return { success: false, error: errData.error || "Failed to save content" };
+        return { success: false, error: result.error || "Failed to save content" };
       }
     } catch (error: any) {
       return { success: false, error: error.message || "Network error" };

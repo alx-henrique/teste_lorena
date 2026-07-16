@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContent } from "../context/ContentContext";
 import { WebsiteContent } from "../content-default";
+import { verifyFirebaseLogin, changeFirebasePassword } from "../firebase";
 import { 
   Lock, Eye, EyeOff, Save, LogOut, ArrowLeft, Radio, 
   Image as ImageIcon, User, Phone, Instagram, Sparkles, CheckCircle2, AlertCircle, Loader2, MessageSquare, Hash, Plus, Trash2, Key
@@ -42,21 +43,15 @@ export default function AdminDashboard() {
     setIsLoggingIn(true);
 
     try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password })
-      });
-
-      const data = await response.json();
-      if (response.ok && data.success) {
-        localStorage.setItem("admin_token", data.token);
-        setToken(data.token);
+      const result = await verifyFirebaseLogin(password);
+      if (result.success && result.token) {
+        localStorage.setItem("admin_token", result.token);
+        setToken(result.token);
       } else {
-        setLoginError(data.error || "Senha incorreta");
+        setLoginError(result.error || "Senha incorreta");
       }
     } catch (err) {
-      setLoginError("Erro de conexão com o servidor.");
+      setLoginError("Erro de conexão com o banco de dados.");
     } finally {
       setIsLoggingIn(false);
     }
@@ -78,26 +73,20 @@ export default function AdminDashboard() {
     setPassSaveStatus({ type: null, message: "" });
 
     try {
-      const response = await fetch("/api/change-password", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ oldPassword, newPassword })
-      });
-
-      const data = await response.json();
-      if (response.ok && data.success) {
+      const result = await changeFirebasePassword(oldPassword, newPassword);
+      if (result.success && result.token) {
         setPassSaveStatus({ type: "success", message: "Senha alterada com sucesso! Você continuará logado." });
         setOldPassword("");
         setNewPassword("");
-        localStorage.setItem("admin_token", data.token);
-        setToken(data.token);
+        localStorage.setItem("admin_token", result.token);
+        setToken(result.token);
         // Reset status after 4 seconds
         setTimeout(() => setPassSaveStatus({ type: null, message: "" }), 4000);
       } else {
-        setPassSaveStatus({ type: "error", message: data.error || "Erro ao alterar a senha." });
+        setPassSaveStatus({ type: "error", message: result.error || "Erro ao alterar a senha." });
       }
     } catch (err) {
-      setPassSaveStatus({ type: "error", message: "Erro de conexão com o servidor." });
+      setPassSaveStatus({ type: "error", message: "Erro de conexão com o banco de dados." });
     } finally {
       setIsChangingPassword(false);
     }
