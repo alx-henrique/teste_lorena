@@ -2,17 +2,17 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { WebsiteContent } from "./content-default";
 
-// Firebase Config
+// Firebase Config from environment variables (loaded via Vite)
 const firebaseConfig = {
-  apiKey: "AIzaSyBjOCPA_yLAz4JrPAAF92z-Sfu_ki3Ghc4",
-  authDomain: "gen-lang-client-0264479969.firebaseapp.com",
-  projectId: "gen-lang-client-0264479969",
-  storageBucket: "gen-lang-client-0264479969.firebasestorage.app",
-  messagingSenderId: "152625007582",
-  appId: "1:152625007582:web:e71eaeb5b652c933b6ab4f"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-const databaseId = "ai-studio-planejadorafinan-80bc7d9f-4b3c-4bf0-a017-f54d0b40054d";
+const databaseId = import.meta.env.VITE_FIREBASE_DATABASE_ID;
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
