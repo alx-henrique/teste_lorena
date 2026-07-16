@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import { X, CheckCircle2, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { useContent } from "../context/ContentContext";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface ContactModalProps {
 }
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const { content } = useContent();
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -29,7 +31,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     
     const text = `${baseText}${msgText}${telText}`;
     const encodedText = encodeURIComponent(text);
-    const whatsappUrl = `https://api.whatsapp.com/send/?phone=5562999945420&text=${encodedText}&type=phone_number&app_absent=0`;
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=${content.whatsappPhone}&text=${encodedText}&type=phone_number&app_absent=0`;
 
     setTimeout(() => {
       setIsSubmitting(false);
@@ -228,7 +230,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </div>
                 
                 <a
-                  href={`https://api.whatsapp.com/send/?phone=5562999945420&text=${encodeURIComponent(`Oi! Meu nome é ${formData.nome}. Vim pelo site e me interessei em saber mais sobre a consultoria financeira para ${formData.tipo}.${formData.mensagem ? ` Mensagem: ${formData.mensagem}` : ""}`)}&type=phone_number&app_absent=0`}
+                  href={`https://api.whatsapp.com/send/?phone=${content.whatsappPhone}&text=${encodeURIComponent(`Oi! Meu nome é ${formData.nome}. Vim pelo site e me interessei em saber mais sobre a consultoria financeira para ${formData.tipo}.${formData.mensagem ? ` Mensagem: ${formData.mensagem}` : ""}`)}&type=phone_number&app_absent=0`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-2 font-sans text-sm font-semibold text-white bg-[#6fbc83] hover:bg-[#2e3925] px-6 py-3 rounded-xl transition-all duration-300 shadow-md"

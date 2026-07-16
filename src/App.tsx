@@ -1,5 +1,5 @@
 import React, { useState, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { motion, useScroll, useTransform } from "motion/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -15,6 +15,7 @@ const Newsletter = React.lazy(() => import("./components/Newsletter"));
 const Footer = React.lazy(() => import("./components/Footer"));
 const ContactModal = React.lazy(() => import("./components/ContactModal"));
 const LearnMore = React.lazy(() => import("./pages/LearnMore"));
+const AdminDashboard = React.lazy(() => import("./pages/AdminDashboard"));
 
 function HomePage() {
   return (
@@ -36,9 +37,12 @@ function HomePage() {
 
 export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const location = useLocation();
 
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);
+
+  const isAdminRoute = location.pathname.startsWith("/admin");
 
   // Hook into viewport scroll progress
   const { scrollY } = useScroll();
@@ -52,35 +56,49 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-[#d9d9d9] overflow-x-hidden selection:bg-[#6fbc83]/20 selection:text-neutral-900">
       
-      {/* PARALLAX LAYER: Floating organic blurs sliding behind foreground */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <motion.div 
-          style={{ y: bgBlob1Y }}
-          className="absolute top-[5%] -left-[10%] w-[50vw] h-[50vw] max-w-[500px] rounded-full bg-[#6fbc83]/6 blur-[120px]"
-        />
-        <motion.div 
-          style={{ y: bgBlob2Y }}
-          className="absolute top-[30%] -right-[10%] w-[60vw] h-[60vw] max-w-[600px] rounded-full bg-[#2e3925]/4 blur-[140px]"
-        />
-        <motion.div 
-          style={{ y: bgBlob3Y }}
-          className="absolute top-[55%] -left-[5%] w-[55vw] h-[55vw] max-w-[550px] rounded-full bg-[#6fbc83]/5 blur-[110px]"
-        />
-        <motion.div 
-          style={{ y: bgBlob4Y }}
-          className="absolute top-[75%] -right-[5%] w-[45vw] h-[45vw] max-w-[450px] rounded-full bg-[#2e3925]/3 blur-[100px]"
-        />
-      </div>
+      {/* PARALLAX LAYER: Floating organic blurs sliding behind foreground (hidden on admin pages) */}
+      {!isAdminRoute && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+          <motion.div 
+            style={{ y: bgBlob1Y }}
+            className="absolute top-[5%] -left-[10%] w-[50vw] h-[50vw] max-w-[500px] rounded-full bg-[#6fbc83]/6 blur-[120px]"
+          />
+          <motion.div 
+            style={{ y: bgBlob2Y }}
+            className="absolute top-[30%] -right-[10%] w-[60vw] h-[60vw] max-w-[600px] rounded-full bg-[#2e3925]/4 blur-[140px]"
+          />
+          <motion.div 
+            style={{ y: bgBlob3Y }}
+            className="absolute top-[55%] -left-[5%] w-[55vw] h-[55vw] max-w-[550px] rounded-full bg-[#6fbc83]/5 blur-[110px]"
+          />
+          <motion.div 
+            style={{ y: bgBlob4Y }}
+            className="absolute top-[75%] -right-[5%] w-[45vw] h-[45vw] max-w-[450px] rounded-full bg-[#2e3925]/3 blur-[100px]"
+          />
+        </div>
+      )}
 
       {/* Foreground Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        <Navbar />
+        {!isAdminRoute && <Navbar />}
         
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/sobre" element={
             <Suspense fallback={<div className="h-20" />}>
               <LearnMore />
+            </Suspense>
+          } />
+          <Route path="/admin" element={
+            <Suspense fallback={
+              <div className="min-h-screen flex items-center justify-center bg-[#F0EEEE]">
+                <div className="flex flex-col items-center space-y-3">
+                  <div className="w-8 h-8 border-4 border-[#6fbc83] border-t-transparent rounded-full animate-spin"></div>
+                  <span className="font-sans text-xs text-neutral-500 font-bold tracking-wide uppercase">Carregando painel...</span>
+                </div>
+              </div>
+            }>
+              <AdminDashboard />
             </Suspense>
           } />
         </Routes>

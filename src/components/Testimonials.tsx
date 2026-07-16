@@ -1,76 +1,16 @@
-import { motion } from "motion/react";
-import { MessageSquare } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { MessageSquare, X, Maximize2 } from "lucide-react";
 import React, { useRef, useState } from "react";
-
-interface Testimonial {
-  id: number;
-  name: string;
-  role: string;
-  avatar: string;
-  feedback: string;
-}
-
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Livia Leite",
-    role: "Estúdio Maré",
-    avatar: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132372/Livia_Leite_-_Est%C3%BAdio_Mar%C3%A9_az85yl.jpg",
-    feedback: `A consultoria me ajudou muito a entender onde a minha empresa se encontra, definir onde queremos chegar e qual é o caminho para isso. 
-
-A metodologia da Lorena me deu mais confiança para lidar com os processos dentro da empresa e também me ajudou a estruturar toda a parte financeira do meu negócio!`
-  },
-  {
-    id: 2,
-    name: "Adeyc Borges",
-    role: "",
-    avatar: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132420/Adeyc_Borges_nh25yy.jpg",
-    feedback: `Existem pessoas que fazem muito mais do que prestar um serviço: elas caminham ao nosso lado nos momentos mais importantes. A Lorena foi exatamente essa pessoa para mim.
-
-Ela chegou em um dos períodos mais desafiadores da minha trajetória profissional, quando eu estava recomeçando e precisava tomar decisões importantes para construir uma empresa sólida. Sempre fui apaixonado pelo que faço, mas administrar as finanças de um negócio era um grande desafio para mim.
-
-Em cada reunião, a Lorena me ajudava a enxergar o cenário com clareza. Juntos analisávamos cada passo, decidíamos o que fazia sentido naquele momento, o que precisava esperar e quais eram os caminhos mais seguros para o crescimento da minha marca. Esse suporte foi essencial para que eu tomasse decisões com mais confiança e responsabilidade.
-
-Hoje posso dizer que grande parte da tranquilidade que tenho para gerir o meu negócio vem desse acompanhamento. Afinal, a saúde financeira é a base de qualquer empresa que deseja crescer de forma sustentável.
-
-Sou muito grato à Lorena por todo o profissionalismo, dedicação e parceria. E mais do que uma consultora financeira, ela se tornou alguém em quem confio para me orientar nas decisões mais importantes da minha empresa. Recomendo o trabalho dela de olhos fechados.`
-  },
-  {
-    id: 3,
-    name: "Claudia Kievel",
-    role: "Jardim Secreto",
-    avatar: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132418/Claudia_Kievel_-_Jardim_Secreto_reqxed.png",
-    feedback: `Ter começado a consultoria financeira com a Lorena foi essencial para entender que precisava de uma organização e revisão mais aprofundada das questões administrativas, burocráticas e dos números do meu negócio. 
-
-Com ela pude entender como ser a administradora que meu negócio precisava - e que eu nem achava que conseguiria ser - mesmo não sendo a minha área de atuação ou formação, mas por ser uma necessidade e responsabilidade dentro da empresa.
-
-Me sinto cada vez mais tranquila e consciente com o meu negócio. Tanto na visão do dia a dia, como numa visão mais macro. 
-
-Me sinto no controle e claro, mais em paz!`
-  },
-  {
-    id: 4,
-    name: "Stephanie",
-    role: "Ondas Buenas",
-    avatar: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784132419/Stephanie_-_Ondas_Buenas_hdaiol.png",
-    feedback: `Adoro o tema, tento estudar sobre na medida do possível e pensava que poderia fazer tudo sozinha, com meus papéis e tabelinhas do excel. Que iludida! 
-
-Ter o conhecimento da Lorena fez eu entender que era uma necessidade da minha empresa essa atenção mais detalhada para o financeiro e tudo que atravessa esse campo. 
-
-Ela é uma profissional muito atenta e o que mais me encantou é que não toma uma decisão sem antes pensar junto, entender a realidade, que é particular de cada um.
-
-Com ela pude me sentir mais segura para seguir dirigindo meu negócio, assim como dando mais razão ao que acredito onde minha marca pode chegar. Hoje, posso afirmar que tenho além de contas, números organizados e calculados, tenho consciência do rumo que meu negócio está tomando e que consequências o movimento dele pode resultar. Obrigada, Lore!
-
-Como falamos na Argentina: 
-vamos por más!`
-  }
-];
+import { useContent } from "../context/ContentContext";
+import { Testimonial } from "../content-default";
 
 export default function Testimonials() {
+  const { content } = useContent();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
 
   const onMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
@@ -90,6 +30,8 @@ export default function Testimonials() {
     const walk = (x - startX) * 2;
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
+
+  const testimonials = content.testimonials || [];
 
   return (
     <section id="depoimentos" className="py-8 md:py-10 bg-transparent relative overflow-hidden">
@@ -143,7 +85,8 @@ export default function Testimonials() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.05 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="select-none bg-[#6fbc83] rounded-3xl p-6 border border-[#6fbc83]/20 ios-widget-shadow ios-widget-shadow-hover transition-all duration-300 flex flex-col justify-between w-[300px] max-w-[85vw] sm:w-auto sm:max-w-none sm:min-w-0 snap-center shrink-0"
+              onClick={() => setSelectedTestimonial(t)}
+              className="select-none bg-[#6fbc83] rounded-3xl p-6 border border-[#6fbc83]/20 ios-widget-shadow ios-widget-shadow-hover transition-all duration-300 flex flex-col justify-between w-[300px] max-w-[85vw] sm:w-auto sm:max-w-none sm:min-w-0 snap-center shrink-0 cursor-pointer group"
               id={`testimonial-card-${t.id}`}
             >
               {/* iOS-Style Notification Header */}
@@ -168,22 +111,27 @@ export default function Testimonials() {
               </div>
 
               {/* iOS-Style Avatar & Identity Info */}
-              <div className="flex items-center space-x-3.5 pt-4 border-t border-white/10">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  loading="lazy"
-                  draggable={false}
-                  referrerPolicy="no-referrer"
-                  className="w-10 h-10 rounded-full object-cover border border-white/10"
-                />
-                <div>
-                  <h4 className="font-display font-semibold text-sm sm:text-xs text-white">
-                    {t.name}
-                  </h4>
-                  <p className="font-sans text-xs sm:text-[10px] text-white/70 font-medium tracking-wide">
-                    {t.role}
-                  </p>
+              <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                <div className="flex items-center space-x-3.5">
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    loading="lazy"
+                    draggable={false}
+                    referrerPolicy="no-referrer"
+                    className="w-10 h-10 rounded-full object-cover border border-white/10"
+                  />
+                  <div>
+                    <h4 className="font-display font-semibold text-sm sm:text-xs text-white">
+                      {t.name}
+                    </h4>
+                    <p className="font-sans text-xs sm:text-[10px] text-white/70 font-medium tracking-wide">
+                      {t.role}
+                    </p>
+                  </div>
+                </div>
+                <div className="text-white/70 group-hover:text-white transition-colors p-1.5 bg-white/15 rounded-full shadow-sm">
+                  <Maximize2 className="w-3.5 h-3.5" />
                 </div>
               </div>
             </motion.div>
@@ -193,6 +141,73 @@ export default function Testimonials() {
         </div>
 
       </div>
+
+      {/* Testimonial Expanded Modal */}
+      <AnimatePresence>
+        {selectedTestimonial && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedTestimonial(null)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-md cursor-pointer"
+            />
+            
+            {/* Modal Container */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 350 }}
+              className="relative bg-[#FAFAFA] rounded-[2rem] shadow-2xl max-w-2xl w-full border border-black/5 p-6 md:p-10 flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start overflow-hidden z-10"
+            >
+              {/* Elegant top-right Close button */}
+              <button
+                onClick={() => setSelectedTestimonial(null)}
+                className="absolute top-4 right-4 p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-500 hover:text-neutral-800 transition-colors cursor-pointer z-20 shadow-sm"
+                aria-label="Fechar"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {/* Left side: Highlighted Portrait */}
+              <div className="relative w-28 h-28 md:w-44 md:h-44 shrink-0 rounded-2xl overflow-hidden shadow-md border border-[#6fbc83]/10">
+                <img
+                  src={selectedTestimonial.avatar}
+                  alt={selectedTestimonial.name}
+                  className="w-full h-full object-cover grayscale-0 transition-transform duration-700"
+                />
+              </div>
+
+              {/* Right side: Testimonial details */}
+              <div className="flex-1 space-y-4 text-center md:text-left w-full">
+                <div>
+                  <h3 className="font-display font-extrabold text-2xl md:text-3xl text-[#6fbc83] tracking-tight leading-none">
+                    {selectedTestimonial.name}
+                  </h3>
+                  {selectedTestimonial.role && (
+                    <p className="font-sans text-sm text-neutral-500 font-medium mt-1.5 tracking-wide">
+                      {selectedTestimonial.role}
+                    </p>
+                  )}
+                </div>
+
+                {/* Decorative separator */}
+                <div className="h-[1px] bg-neutral-200 w-12 md:w-16 my-2 mx-auto md:mx-0"></div>
+
+                {/* Highlighted text container */}
+                <div className="max-h-[300px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-300 scrollbar-track-transparent">
+                  <p className="whitespace-pre-wrap font-sans text-base md:text-[17px] text-neutral-700 leading-relaxed font-semibold">
+                    "{selectedTestimonial.feedback}"
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

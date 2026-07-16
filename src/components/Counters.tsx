@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
+import { useContent } from "../context/ContentContext";
 
 export default function Counters() {
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
+  const { content } = useContent();
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -30,43 +30,6 @@ export default function Counters() {
     };
   }, [hasAnimated]);
 
-  useEffect(() => {
-    if (!hasAnimated) return;
-
-    let startTimestamp1: number | null = null;
-    let startTimestamp2: number | null = null;
-    
-    const duration1 = 1800; // ms
-    const duration2 = 1400; // ms
-    const target1 = 210;
-    const target2 = 170;
-
-    const step1 = (timestamp: number) => {
-      if (!startTimestamp1) startTimestamp1 = timestamp;
-      const progress = Math.min((timestamp - startTimestamp1) / duration1, 1);
-      // Easing function: cubic-out for Apple-like smoothness
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
-      setCount1(Math.floor(easeProgress * target1));
-      if (progress < 1) {
-        window.requestAnimationFrame(step1);
-      }
-    };
-
-    const step2 = (timestamp: number) => {
-      if (!startTimestamp2) startTimestamp2 = timestamp;
-      const progress = Math.min((timestamp - startTimestamp2) / duration2, 1);
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
-      setCount2(Math.floor(easeProgress * target2));
-      if (progress < 1) {
-        window.requestAnimationFrame(step2);
-      }
-    };
-
-    window.requestAnimationFrame(step1);
-    window.requestAnimationFrame(step2);
-
-  }, [hasAnimated]);
-
   return (
     <section
       ref={sectionRef}
@@ -84,11 +47,11 @@ export default function Counters() {
             className="flex flex-col items-center justify-center space-y-3 pb-10 md:pb-0 group text-center"
           >
             <span className="font-display text-6xl sm:text-7xl md:text-7xl font-extrabold tracking-tight text-[#6fbc83] select-none">
-              +{count1}
+              {content.stat1Value}
             </span>
             <div className="w-8 h-[1.5px] bg-[#6fbc83]/30 group-hover:w-16 transition-all duration-500 ease-out"></div>
             <p className="font-sans text-sm sm:text-base text-neutral-600 font-medium max-w-xs tracking-wide leading-relaxed">
-              Pessoas físicas e profissionais autônomos
+              {content.stat1Text}
             </p>
           </motion.div>
 
@@ -101,11 +64,11 @@ export default function Counters() {
             className="flex flex-col items-center justify-center space-y-3 pt-10 md:pt-0 group text-center"
           >
             <span className="font-display text-6xl sm:text-7xl md:text-7xl font-extrabold tracking-tight text-[#6fbc83] select-none">
-              +{count2}
+              {content.stat2Value}
             </span>
             <div className="w-8 h-[1.5px] bg-[#6fbc83]/30 group-hover:w-16 transition-all duration-500 ease-out"></div>
             <p className="font-sans text-sm sm:text-base text-neutral-600 font-medium max-w-xs tracking-wide leading-relaxed">
-              Pequenos negócios organizados e estruturados
+              {content.stat2Text}
             </p>
           </motion.div>
 

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+import { useContent } from "../context/ContentContext";
 
 export default function About() {
+  const { content } = useContent();
+
   return (
     <section id="sobre-mim" className="py-8 md:py-10 bg-transparent">
       <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16">
@@ -48,12 +51,12 @@ export default function About() {
             <div className="flex flex-col space-y-5 max-w-xl">
               {/* Paragraph 1 */}
               <p className="font-sans text-base md:text-lg text-neutral-500 leading-relaxed font-medium">
-                No meu dia a dia ofereço <strong className="text-[#6fbc83] font-semibold">consultoria financeira individual para autônomos e pequenos negócios</strong> que querem <strong className="text-[#6fbc83] font-semibold">olhar com inteligência e estratégia</strong> para a forma como geram e cuidam do dinheiro.
+                {content.aboutMeBodyText1}
               </p>
 
               {/* Paragraph 2 */}
               <p className="font-sans text-base md:text-lg text-neutral-500 leading-relaxed font-medium">
-                Entendo que nem sempre os desafios que os clientes atravessam são simples, mas quando consigo <strong className="text-[#6fbc83] font-semibold">promover clareza ao que de fato está acontecendo</strong> e a partir daí <strong className="text-[#6fbc83] font-semibold">discutir possíveis soluções para os problemas</strong>, dá pra ver no olho do cliente a empolgação e isso - honestamente - me deixa feliz demais.
+                {content.aboutMeBodyText2}
               </p>
             </div>
 
@@ -77,7 +80,7 @@ export default function About() {
               />
               <div>
                 <p className="font-display text-sm sm:text-base font-extrabold text-[#6fbc83]">Lorena Pires Carvalho</p>
-                <p className="font-sans text-xs sm:text-sm text-neutral-500 font-medium">CFP® & CVM</p>
+                <p className="font-sans text-xs sm:text-sm text-neutral-500 font-medium">{content.aboutMeRole}</p>
               </div>
             </div>
           </motion.div>

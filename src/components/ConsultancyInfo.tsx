@@ -8,8 +8,10 @@ import {
   Compass, 
   Flag 
 } from "lucide-react";
+import { useContent } from "../context/ContentContext";
 
 export default function ConsultancyInfo() {
+  const { content } = useContent();
 
   const benefits = [
     {
@@ -30,7 +32,7 @@ export default function ConsultancyInfo() {
     },
     {
       icon: Compass,
-      desc: "Busca um olhar sensível que integre o negócio com a pessoa, entendo que um faz parte do outro"
+      desc: "Busca um olhar sensível que integre o negócio com a pessoa, entendendo que um faz parte do outro"
     },
     {
       icon: Flag,
@@ -38,7 +40,7 @@ export default function ConsultancyInfo() {
     }
   ];
 
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0";
+  const whatsappUrl = `https://api.whatsapp.com/send/?phone=${content.whatsappPhone}&text=${encodeURIComponent(content.whatsappText)}&type=phone_number&app_absent=0`;
 
   return (
     <div className="bg-transparent py-8 md:py-10 overflow-hidden space-y-8 md:space-y-10">
@@ -102,7 +104,7 @@ export default function ConsultancyInfo() {
             </h2>
             <div className="space-y-4 font-sans text-[15px] sm:text-base md:text-lg text-neutral-600 font-medium leading-relaxed">
               <p>
-                Cada pessoa e cada empresa são únicas. É por isso que não acredito que soluções e caminhos possam ser construídos de forma padronizada, em linha de montagem. São as particularidades de cada caso que ditam qual vai ser a melhor condução: número de encontros, forma de pagamento, escopo e tempo de acompanhamento.
+                Cada pessoa e cada empresa são únicas. Portanto não acredito que soluções e caminhos possam ser construídos de forma padronizada, em linha de montagem. São as particularidades de cada caso que ditam qual vai ser a melhor condução: número de encontros, forma de pagamento, escopo e tempo de acompanhamento.
               </p>
               <p>
                 É por isso que tudo começa com a escuta. A gente marca uma conversa on-line (algo entre 20 e 30 minutos) para você me contar o que está acontecendo, e a partir daí eu desenvolvo uma proposta de trabalho focada no que você precisa. Essa conversa é gratuita e é o nosso ponto de partida!

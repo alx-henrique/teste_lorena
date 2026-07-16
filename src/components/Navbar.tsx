@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useContent } from "../context/ContentContext";
 
 export default function Navbar() {
+  const { content } = useContent();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const whatsappUrl = `https://api.whatsapp.com/send/?phone=${content.whatsappPhone}&text=${encodeURIComponent(content.whatsappText)}&type=phone_number&app_absent=0`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,7 +95,7 @@ export default function Navbar() {
           </div>
 
           <a
-            href="https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0"
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer font-sans text-[11px] lg:text-xs font-bold uppercase tracking-wider text-white bg-[#6fbc83] hover:bg-[#5aa36e] px-6 py-3 rounded-full transition-all duration-300 transform active:scale-98 shadow-sm"
@@ -130,7 +134,7 @@ export default function Navbar() {
           {/* Mobile CTA & Menu Trigger */}
           <div className="flex items-center space-x-3">
             <a
-              href="https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer font-sans text-[10px] font-bold uppercase tracking-wider text-white bg-[#6fbc83] hover:bg-[#5aa36e] px-3 py-1.5 rounded-full transition-all duration-300 shadow-sm"
@@ -183,7 +187,7 @@ export default function Navbar() {
 
             <div className="pt-2">
               <a
-                href="https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}

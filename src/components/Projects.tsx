@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Sparkles, Radio, Users, Target, Bookmark, ArrowRight, CheckCircle2 } from "lucide-react";
+import { useContent } from "../context/ContentContext";
 
 export default function Projects() {
+  const { content } = useContent();
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const toggleExpand = (id: string) => {
@@ -11,12 +13,12 @@ export default function Projects() {
 
   const images = [
     {
-      url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784133155/1_Encontro_2026_1_ijxdvi.jpg",
+      url: content.bastidorImage1,
       alt: "Bastidor da Lore - Encontro 1",
       title: "Encontro Presencial"
     },
     {
-      url: "https://res.cloudinary.com/drrbezrpk/image/upload/v1784133155/1_Encontro_2026_brggw2.jpg",
+      url: content.bastidorImage2,
       alt: "Bastidor da Lore - Encontro 2",
       title: "Planejamento e Troca"
     }
@@ -39,7 +41,7 @@ export default function Projects() {
           className="text-center max-w-2xl mx-auto"
         >
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6fbc83]">
-            Outros projetos dos quais participo
+            Outros projetos
           </h2>
           <p className="font-sans text-base md:text-lg text-neutral-600 mt-4 leading-relaxed font-medium">
             Iniciativas e espaços onde compartilho conhecimentos sobre finanças, negócios e estratégia.
@@ -57,9 +59,9 @@ export default function Projects() {
           {/* Subtle decoration */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#6fbc83]/5 to-transparent rounded-full pointer-events-none"></div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left side: Deep text explanation */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-5 space-y-6">
               <div className="inline-flex items-center space-x-2 bg-[#6fbc83] text-white px-3.5 py-1.5 rounded-full shadow-sm select-none">
                 <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                 <span className="font-display font-extrabold text-xs sm:text-[10px] tracking-wider uppercase font-semibold">Bastidor da Lore</span>
@@ -110,33 +112,27 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Right side: Modern Image Deck (Two Photos Side-by-Side) */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+            {/* Right side: Modern Image Deck (Two Photos Side-by-Side - Larger on Desktop) */}
+            <div className="lg:col-span-7 w-full h-full min-h-[400px]">
+              <div className="grid grid-cols-2 gap-4 h-full">
                 {/* Photo 1 */}
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
+                <div className="relative aspect-[3/4] md:aspect-auto md:h-full min-h-[300px] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
                   <img 
                     src={images[0].url} 
                     alt={images[0].alt} 
                     loading="lazy"
-                    className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 transition-all duration-700"
+                    className="absolute inset-0 w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 transition-all duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-3">
-                    <span className="font-sans text-xs sm:text-[9px] font-bold text-white uppercase tracking-widest">{images[0].title}</span>
-                  </div>
                 </div>
 
                 {/* Photo 2 */}
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
+                <div className="relative aspect-[3/4] md:aspect-auto md:h-full min-h-[300px] rounded-2xl overflow-hidden shadow-sm border border-black/[0.03]">
                   <img 
                     src={images[1].url} 
                     alt={images[1].alt} 
                     loading="lazy"
-                    className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 transition-all duration-700"
+                    className="absolute inset-0 w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 transition-all duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-3">
-                    <span className="font-sans text-xs sm:text-[9px] font-bold text-white uppercase tracking-widest">{images[1].title}</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -197,7 +193,7 @@ export default function Projects() {
                 >
                   <div className="pt-5 mt-5 border-t border-black/[0.06] space-y-4">
                     <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-medium">
-                      No episódio mais recente, conversamos sobre os <strong className="text-[#6fbc83] font-semibold">desafios reais de quem decide mudar de rumo profissional</strong> de forma planejada. Dê o play para conferir!
+                      {content.fofocaDescription}
                     </p>
 
                     {/* Embed Player */}
@@ -208,7 +204,7 @@ export default function Projects() {
                       <iframe 
                         data-testid="embed-iframe" 
                         style={{ borderRadius: "12px" }} 
-                        src="https://open.spotify.com/embed/episode/03jddbMaYVhjt8SrzbNlhS?utm_source=generator&si=be2b9301791741c8" 
+                        src={content.fofocaEpisodeUrl} 
                         width="100%" 
                         height="352" 
                         frameBorder="0" 

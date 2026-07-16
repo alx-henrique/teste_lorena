@@ -1,8 +1,27 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useContent } from "../context/ContentContext";
 
 export default function LearnMore() {
+  const { content } = useContent();
+
+  const whatsappUrl = `https://api.whatsapp.com/send/?phone=${content.whatsappPhone}&text=${encodeURIComponent(content.whatsappText)}&type=phone_number&app_absent=0`;
+  
+  const parseMarkdownBold = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={index} className="text-[#6fbc83] font-semibold">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
+  const textParagraphs = content.learnMoreText 
+    ? content.learnMoreText.split('\n\n') 
+    : [];
+
   return (
     <div className="min-h-screen bg-[#2E3925] text-neutral-200 pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
@@ -23,7 +42,7 @@ export default function LearnMore() {
           >
             <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
               <img 
-                src="https://res.cloudinary.com/drrbezrpk/image/upload/v1782950670/Captura_de_tela_2026-07-01_210511_klbdxp.png" 
+                src={content.learnMoreImageSrc || "https://res.cloudinary.com/drrbezrpk/image/upload/v1782950670/Captura_de_tela_2026-07-01_210511_klbdxp.png"}
                 alt="Lorena" 
                 className="w-full aspect-[4/5] object-cover"
               />
@@ -39,22 +58,14 @@ export default function LearnMore() {
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-8 tracking-tight">
               Mais sobre mim
             </h1>
-            <p>
-              Comecei minha carreira como planejadora financeira independente em 2018, época em que atendia exclusivamente pessoas físicas. Talvez por isso, ainda que hoje meu foco seja o atendimento de pequenos negócios, o <strong className="text-[#6fbc83] font-semibold">meu ponto de partida continua sendo as pessoas e as vidas envolvidas ali</strong> e não apenas números, gráficos, indicators e processos. Vai muito além disso. E que bom que é assim!
-            </p>
-            <p>
-              Além das consultorias, também ofereço palestras, supervisão para colegas de profissão, workshops, rodas de conversa, sempre com o propósito de <strong className="text-[#6fbc83] font-semibold">trazer o assunto "grana" para a mesa de forma clara, realista e acessível</strong>.
-            </p>
-            <p>
-              Por entender o impacto do meu trabalho, sempre me preocupei em continuar estudando e me aperfeiçoando. Sou engenheira civil formada pela UFG, onde também fiz mestrado, e desde que migrei para o planejamento financeiro, me preocupo em seguir me desenvolvendo. 
-            </p>
-            <p>
-              Atualmente, sou <strong className="text-[#6fbc83] font-semibold">pós-graduanda em Gestão de Negócios na USP/Esalq</strong>, aluna e supervisora da <strong className="text-[#6fbc83] font-semibold">Nossa – Escola para Planejadores Financeiros</strong>, e possuo a <strong className="text-[#6fbc83] font-semibold">certificação CFP®</strong>, a mais respeitada certificação internacional de planejamento financeiro.
-            </p>
-            
+
+            {textParagraphs.map((paragraph, index) => (
+              <p key={index}>{parseMarkdownBold(paragraph)}</p>
+            ))}
+
             <div className="pt-8">
               <a
-                href="https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group w-full sm:w-auto inline-flex justify-center items-center space-x-2 font-sans text-sm font-semibold tracking-wide text-white bg-[#6fbc83] hover:bg-[#5aa36e] px-8 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0 text-center"

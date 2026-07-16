@@ -1,35 +1,36 @@
 import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import { useContent } from "../context/ContentContext";
 
 export default function Hero() {
+  const { content } = useContent();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [imageSrc, setImageSrc] = useState("https://res.cloudinary.com/drrbezrpk/image/upload/v1783000000/Untitled-1_r6yx8s.png");
+  const [imageSrc, setImageSrc] = useState(content.heroImageSrc);
   const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
+  useEffect(() => {
+    setImageSrc(content.heroImageSrc);
+  }, [content.heroImageSrc]);
+
   const handleImageError = () => {
     if (retryCount === 0) {
-      // Try JPG extension
       setImageSrc("https://res.cloudinary.com/drrbezrpk/image/upload/v1783000000/Untitled-1_r6yx8s.jpg");
       setRetryCount(1);
     } else if (retryCount === 1) {
-      // Try without version
       setImageSrc("https://res.cloudinary.com/drrbezrpk/image/upload/Untitled-1_r6yx8s.png");
       setRetryCount(2);
     } else if (retryCount === 2) {
-      // Try without version and with jpg
-      setImageSrc("https://res.cloudinary.com/drrbezrpk/image/upload/Untitled-1_r6yx8s.jpg");
-      setRetryCount(3);
-    } else if (retryCount === 3) {
-      // Final fallback to the high-quality portrait that is known to work
       setImageSrc("https://res.cloudinary.com/drrbezrpk/image/upload/v1782950670/Captura_de_tela_2026-07-01_210511_klbdxp.png");
-      setRetryCount(4);
+      setRetryCount(3);
     }
   };
+
+  const whatsappUrl = content.heroCtaLink || `https://api.whatsapp.com/send/?phone=${content.whatsappPhone}&text=${encodeURIComponent(content.whatsappText)}&type=phone_number&app_absent=0`;
 
   return (
     <section
@@ -59,20 +60,19 @@ export default function Hero() {
             </h1>
 
             <p className="max-w-lg lg:max-w-[540px] font-sans text-neutral-200 text-sm md:text-base lg:text-lg leading-relaxed font-medium">
-              e que leve em consideração as suas particularidades é o caminho no qual eu aposto para uma vida financeira melhor,{" "}
-              <span className="text-white">seja para a empresa, seja para todas as pessoas que estão por&nbsp;trás.</span>
+              {content.heroSubtitle}
             </p>
           </div>
 
           {/* Action Button */}
           <div className="pt-2 md:pt-4 flex justify-start">
             <a
-              href="https://api.whatsapp.com/send/?phone=5562999945420&text=Oi%21+Vim+pelo+site+e+me+interessei+em+saber+mais+sobre+a+consultoria+financeira.&type=phone_number&app_absent=0"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="group cursor-pointer flex items-center space-x-2 md:space-x-3 font-sans text-sm font-bold tracking-wide text-white bg-[#6fbc83] hover:bg-[#5aa36e] px-6 py-3 md:px-8 md:py-4 rounded-full transition-all duration-300 shadow-lg transform hover:-translate-y-1 active:translate-y-0"
             >
-              <span>Quero marcar uma conversa</span>
+              <span>{content.heroCtaText || "Quero marcar uma conversa"}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

@@ -1,7 +1,9 @@
 import { ArrowUp, Mail, Linkedin, Globe, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useContent } from "../context/ContentContext";
 
 export default function Footer() {
+  const { content } = useContent();
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -26,7 +28,7 @@ export default function Footer() {
             {/* Social channels */}
             <div className="flex items-center space-x-4 pt-2">
               <a
-                href="https://www.instagram.com/lorenapires.cfp/"
+                href={content.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 hover:text-black transition-colors"
